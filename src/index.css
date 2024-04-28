@@ -12,4 +12,8 @@ code {
     monospace;
 }
 
-
+.highlighted {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
