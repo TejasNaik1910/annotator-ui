@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 2.5em;
+}
+.labelsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  /* padding-right: 1em; */
+}
+
+.summaryContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.subCategoryContainer {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.labelButton {
+  padding: 0.5em;
+  margin: 1em 0;
+  width: 10em;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.labelButtonAndEvidenceContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.evidenceContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.evidenceParagraph {
+  margin: 0;
+  padding: 0.25em 0;
+}
+
+.highlightOmissionLabelColor {
+  background-color: lightseagreen;
+}
+
+.highlightIncorrectLabelColor {
+  background-color: lightcoral;
+}
+
+.highlightAmbiguousLabelColor {
+  background-color: lightblue;
+}
