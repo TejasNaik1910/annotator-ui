@@ -1,0 +1,16 @@
+<!-- paragraph.html -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<div id="paragraph-container">
+  <p id="paragraph-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+</div>
+
+<div id="annotation-options">
+  <label>Select an annotation:</label>
+  <input type="radio" name="annotation" value="option1"> Option 1
+  <input type="radio" name="annotation" value="option2"> Option 2
+  <!-- Add more options as needed -->
+</div>
+
+<button id="submit-annotation">Submit Annotation</button>
