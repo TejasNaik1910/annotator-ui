@@ -15,11 +15,10 @@ function HighlightText() {
     const labels = ['hallucinationA', 'hallucinationB', 'Not Specified'];
 
     useEffect(() => {
-        // Hide dropdown when clicking outside of the text area
         const handleClickOutside = (event) => {
             if (textAreaRef.current && !textAreaRef.current.contains(event.target)) {
                 setShowDropdown(false);
-                window.getSelection().removeAllRanges(); // Clear selection
+                window.getSelection().removeAllRanges();
             }
         };
 
@@ -60,7 +59,6 @@ function HighlightText() {
 
             setHighlights([...highlights, highlight]);
 
-            // Update segments with new highlight
             const newSegments = segments.map(segment => {
                 if (segment.text.includes(selectedText)) {
                     const beforeText = segment.text.substring(0, start);
@@ -75,9 +73,28 @@ function HighlightText() {
             }).flat();
 
             setSegments(newSegments.filter(seg => seg.text)); // Remove empty text segments
-            setSelectedRange(null); // Reset the selection range
+            setSelectedRange(null);
         }
         setShowDropdown(false);
+    };
+
+    const handleSubmit = () => {
+        const annotations = highlights.reduce((acc, highlight) => {
+            if (!acc[highlight.label]) {
+                acc[highlight.label] = [];
+            }
+            acc[highlight.label].push(highlight.text);
+            return acc;
+        }, {});
+
+        const jsonString = JSON.stringify(annotations, null, 2);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'annotations.json';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -99,6 +116,7 @@ function HighlightText() {
                     </span>
                 ))}
             </p>
+            <button onClick={handleSubmit}>Submit</button>
             <div>
                 <h3>Highlights</h3>
                 <ul>
@@ -121,8 +139,3 @@ root.render(
 );
 
 reportWebVitals();
-
-
-
-
-
