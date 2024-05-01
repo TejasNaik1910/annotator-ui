@@ -108,6 +108,10 @@ function HighlightText({ texts }) {
             setIsSubmitted(false); // Reset submission status for the next text
         }
     };
+    const handleDeleteHighlight = (index) => {
+        const newHighlights = highlights.filter((_, i) => i !== index);
+        setHighlights(newHighlights);
+    };
     
     
     return (
@@ -140,6 +144,7 @@ function HighlightText({ texts }) {
                         <th style={{ border: '1px solid black', padding: '8px' }}>Evidence</th>
                         <th style={{ border: '1px solid black', padding: '8px' }}>Evidence Indexes</th>
                         <th style={{ border: '1px solid black', padding: '8px' }}>Color</th>
+                        <th style={{ border: '1px solid black', padding: '8px' }}>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -151,6 +156,7 @@ function HighlightText({ texts }) {
                                 {highlight.startOffset} to {highlight.endOffset}
                             </td>
                             <td style={{ border: '1px solid black', padding: '8px' }}>{highlight.color}</td>
+                            <td style={{ border: '1px solid black', padding: '8px' }}><button onClick={() => handleDeleteHighlight(index)}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>
