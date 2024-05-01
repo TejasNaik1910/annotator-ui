@@ -1,0 +1,14 @@
+Patient History:
+The patient is a female with a history of cerebral aneurysm, abdominal aortic aneurysm, antiphospholipid syndrome, breast cancer, varicose veins, COPD, OSA, T2DM, GERD, diverticulosis, depression, and multiple previous surgeries. She has a family history of various cancers and other medical conditions.
+
+Chief Complaint:
+The patient presented with low back pain radiating down the right leg.
+
+Medical Interventions:
+The patient underwent decompression L2-S1, fusion L4-L5, and duraplasty on ___ to address the spinal issues causing her pain.
+
+Diagnostic Tests:
+Imaging, including CT A/P and MRI spine, showed disc bulges, severe narrowing of the spinal canal, and foraminal narrowing at various levels of the spine. CT ABD & PELVIS ruled out any acute abdominal issues.
+
+Response to Treatment:
+The patient's pain and symptoms improved following the surgical interventions. She was able to tolerate oral pain medication, and her vital signs remained stable. She was discharged with pain medication and instructions for activity and wound care. She will have follow-up appointments to monitor her recovery.
