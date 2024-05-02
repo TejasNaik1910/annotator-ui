@@ -109,8 +109,18 @@ function HighlightText({ texts }) {
         }
     };
     const handleDeleteHighlight = (index) => {
+        const deletedHighlight = highlights[index];
         const newHighlights = highlights.filter((_, i) => i !== index);
         setHighlights(newHighlights);
+    
+        const newSegments = segments.map(segment => {
+            if (segment.text === deletedHighlight.text) {
+                return { text: segment.text, color: 'transparent' };
+            }
+            return segment;
+        });
+    
+        setSegments(newSegments);
     };
     
     
