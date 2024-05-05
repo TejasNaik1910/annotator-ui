@@ -38,3 +38,38 @@
 #     json.dump(data, json_file, indent=2)
 
 # print(f"{file_name} created successfully.")
+
+########################## CREATE HALLUCINATIONS CSV ########################
+# import csv
+
+# # Sample data
+# records = [
+#     {
+#         "recordNumber": 1,
+#         "hallucinationA": "Some data for A1",
+#         "hallucinationB": "Some data for B1"
+#     },
+#     {
+#         "recordNumber": 2,
+#         "hallucinationA": "Some data for A2",
+#         "hallucinationB": "Some data for B2"
+#     },
+#     {
+#         "recordNumber": 3,
+#         "hallucinationA": "Some data for A3",
+#         "hallucinationB": "Some data for B3"
+#     },
+#     # Add more records as needed
+# ]
+
+# # File path for output
+# output_file = 'hallucinations.csv'
+
+# # Write data to CSV
+# with open(output_file, mode='w', newline='') as file:
+#     writer = csv.DictWriter(file, fieldnames=['recordNumber', 'hallucinationA', 'hallucinationB'])
+#     writer.writeheader()
+#     for record in records:
+#         writer.writerow(record)
+
+# print(f'CSV file {output_file} created successfully!')

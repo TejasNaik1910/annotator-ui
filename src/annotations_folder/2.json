@@ -1,0 +1,26 @@
+{
+  "hallucinationA": [
+    {
+      "text": " Allergies are sulfa drugs, codeine, and Bactrim.\n\nShe was admitted with symptoms of acute on chronic shortness of breath, midsternal chest ache, and a chronic nonproductive cough. Despite recent edema in the lower extremities, evaluations were negative for venous thrombosis. Initial labs showed leukocytosis, anemia, elevated lactate levels, and abnormal liver function tests suggestive of liver involvement by metastatic disease.",
+      "startOffset": 419,
+      "endOffset": 851
+    },
+    {
+      "text": "female",
+      "startOffset": 17,
+      "endOffset": 23
+    }
+  ],
+  "hallucinationB": [
+    {
+      "text": "Concerning findings",
+      "startOffset": 1411,
+      "endOffset": 1430
+    },
+    {
+      "text": "The patient",
+      "startOffset": 0,
+      "endOffset": 11
+    }
+  ]
+}

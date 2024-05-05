@@ -1,0 +1,21 @@
+{
+  "hallucinationB": [
+    {
+      "text": "patient is a female",
+      "startOffset": 4,
+      "endOffset": 23
+    }
+  ],
+  "hallucinationA": [
+    {
+      "text": "with a history of metastatic cancer",
+      "startOffset": 24,
+      "endOffset": 59
+    },
+    {
+      "text": "vitamin B12 deficiency,",
+      "startOffset": 246,
+      "endOffset": 269
+    }
+  ]
+}
