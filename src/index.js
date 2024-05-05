@@ -151,7 +151,12 @@ function HighlightText() {
     
         return { __html: highlightedText };
     };
-    
+    const handleDeleteHighlight = (index) => {
+        const updatedHighlights = [...highlights];
+        updatedHighlights.splice(index, 1);
+        setHighlights(updatedHighlights);
+
+    };
 
     return (
         <div ref={textAreaRef} style={{ textAlign: 'center' }}>
@@ -190,6 +195,7 @@ function HighlightText() {
                             <th style={{ border: '1px solid black', padding: '8px' }}>Evidence</th>
                             <th style={{ border: '1px solid black', padding: '8px' }}>Evidence Indexes</th>
                             <th style={{ border: '1px solid black', padding: '8px' }}>Color</th>
+                            <th style={{ border: '1px solid black', padding: '8px' }}>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -201,6 +207,7 @@ function HighlightText() {
                                     {highlight.startOffset} to {highlight.endOffset}
                                 </td>
                                 <td style={{ border: '1px solid black', padding: '8px' }}>{highlight.color}</td>
+                                <td style={{ border: '1px solid black', padding: '8px' }}><button onClick={() => handleDeleteHighlight(index)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
