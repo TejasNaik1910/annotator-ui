@@ -5,7 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 function HighlightText() {
-    const { model,id } = useParams(); // Get the id,model parameter from the URL
+    const { model, id } = useParams(); // Get the model and id parameters from the URL
     const [initialText, setText] = useState('');
 
     useEffect(() => {
@@ -16,8 +16,8 @@ function HighlightText() {
         };
 
         fetchText();
-    }, [model,id]);
-    // const initialText = "This is a sample text that you can highlight. Select part of it to apply a sample label.";
+    }, [model, id]);
+
     const [highlights, setHighlights] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
@@ -77,8 +77,6 @@ function HighlightText() {
             setSelectedRange(range);
             setDropdownPosition({ x: rect.left, y: rect.bottom + window.scrollY });
             setShowDropdown(true);
-
-            
         }
     };
 
@@ -93,7 +91,11 @@ function HighlightText() {
             if (!acc[highlight.label]) {
                 acc[highlight.label] = [];
             }
-            acc[highlight.label].push(highlight.text);
+            acc[highlight.label].push({
+                text: highlight.text,
+                startOffset: highlight.startOffset,
+                endOffset: highlight.endOffset,
+            });
             return acc;
         }, {});
 
@@ -131,6 +133,26 @@ function HighlightText() {
         }
     };
 
+    const renderHighlightedText = () => {
+        // Sort highlights by their starting position in descending order
+        const sortedHighlights = [...highlights].sort((a, b) => b.startOffset - a.startOffset);
+    
+        // Start with plain text, replacing highlighted parts with span tags
+        let highlightedText = initialText;
+    
+        sortedHighlights.forEach((highlight) => {
+            // Extract text between startOffset and endOffset
+            const highlightedPart = highlightedText.substring(highlight.startOffset, highlight.endOffset);
+            const spanTag = `<span style="background-color: ${highlight.color};">${highlightedPart}</span>`;
+    
+            // Replace the specific range with the span tag
+            highlightedText = highlightedText.substring(0, highlight.startOffset) + spanTag + highlightedText.substring(highlight.endOffset);
+        });
+    
+        return { __html: highlightedText };
+    };
+    
+
     return (
         <div ref={textAreaRef} style={{ textAlign: 'center' }}>
             <h1 style={{ fontWeight: 'bold', color: 'black' }}>Annotation UI - UMass X Mendel AI</h1>
@@ -145,9 +167,13 @@ function HighlightText() {
                 </select>
             )}
             <section>
-                <p onMouseUp={handleMouseUp} style={{ cursor: 'pointer', userSelect: 'text' }}>
-                    {initialText}
-                </p>
+                <p
+                    onMouseUp={handleMouseUp}
+                    style={{ cursor: 'pointer', userSelect: 'text' }}
+                    dangerouslySetInnerHTML={renderHighlightedText()}
+                />
+            </section>
+            <section>
                 <button onClick={handleSubmit} disabled={isSubmitted}>Submit</button>
                 {isSubmitted && (
                     <h1 style={{ fontWeight: 'bold', color: 'darkblue' }}>
