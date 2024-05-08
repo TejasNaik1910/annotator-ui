@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.title {
+}
+
+.summarySubHeading {
+  margin-bottom: 10px;
+}
+.summaryContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.tableContainer {
+  width: 95%;
+  overflow-x: auto;
+}
+.annotationTable {
+  width: 100%;
+  margin-top: 2rem;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid black;
+  text-align: left;
+}
+
+th {
+  background-color: blueviolet;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.submitButton {
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  /* background-image: linear-gradient(to bottom, #4caf50, #388e3c); */
+  background-image: linear-gradient(to bottom, #8a2be2, #4b0082);
+  margin-bottom: 2rem;
+}
+.submitButton:hover {
+  /* background-image: linear-gradient(to bottom, #45a049, #388e3c); */
+  background-image: linear-gradient(to bottom, #6a1f9a, #2d0059);
+}
