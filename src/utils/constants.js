@@ -1,62 +1,60 @@
 export const ANNOTATED_DATA_STRUCTURE = {
   "Patient Information": {
     Incorrect: {
-      evidence: [],
+      evidences: [],
     },
     Omission: {
-      evidence: [],
+      evidences: [],
     },
   },
-  "Chronological Inconsistnecy": {
+  "Chronological Inconsistency": {
     Incorrect: {
-      evidence: [],
+      evidences: [],
     },
     Omission: {
-      evidence: [],
+      evidences: [],
     },
   },
   Reasoning: {
     Incorrect: {
-      evidence: [],
+      evidences: [],
     },
     Omission: {
-      evidence: [],
+      evidences: [],
     },
   },
-  "Medical Event Inconsistency": {
-    "Patient History": {
-      Incorrect: {
-        evidence: [],
-      },
-      Omission: {
-        evidence: [],
-      },
+  "MEI - Patient History": {
+    Incorrect: {
+      evidences: [],
     },
-    "Symptom/Diagnosis/Medical Procedures": {
-      Ambiguous: {
-        evidence: [],
-      },
-      Incorrect: {
-        evidence: [],
-      },
+    Omission: {
+      evidences: [],
     },
-    "Medicine Related Instructions": {
-      Ambiguous: {
-        evidence: [],
-      },
-      Incorrect: {
-        evidence: [],
-      },
+  },
+  "MEI - Symptom/Diagnosis/Medical Procedures": {
+    Incorrect: {
+      evidences: [],
     },
-    Followup: {
-      Incorrect: {
-        evidence: [],
-      },
+    Omission: {
+      evidences: [],
+    },
+  },
+  "MEI - Medicine Related Instructions": {
+    Incorrect: {
+      evidences: [],
+    },
+    Omission: {
+      evidences: [],
+    },
+  },
+  "MEI - Followup": {
+    Incorrect: {
+      evidences: [],
     },
   },
   "Other Inconsistency": {
     Incorrect: {
-      evidence: [],
+      evidences: [],
     },
   },
 };
@@ -64,28 +62,34 @@ export const ANNOTATED_DATA_STRUCTURE = {
 export const LABELS_STRUCTURE = {
   "Patient Information": {
     labels: ["Incorrect", "Omission"],
+    color: "blue",
   },
-  "Chronological Inconsistnecy": {
+  "Chronological Inconsistency": {
     labels: ["Incorrect", "Omission"],
+    color: "red",
   },
   Reasoning: {
     labels: ["Incorrect", "Omission"],
+    color: "yellow",
   },
-  "Medical Event Inconsistency": {
-    "Patient History": {
-      labels: ["Incorrect", "Omission"],
-    },
-    "Symptom/Diagnosis/Medical Procedures": {
-      labels: ["Ambiguous", "Incorrect"],
-    },
-    "Medicine Related Instructions": {
-      labels: ["Ambiguous", "Incorrect"],
-    },
-    Followup: {
-      labels: ["Incorrect"],
-    },
+  "MEI - Patient History": {
+    labels: ["Incorrect", "Omission"],
+    color: "green",
+  },
+  "MEI - Symptom/Diagnosis/Medical Procedures": {
+    labels: ["Incorrect", "Omission"],
+    color: "purple",
+  },
+  "MEI - Medicine Related Instructions": {
+    labels: ["Incorrect", "Omission"],
+    color: "orange",
+  },
+  "MEI - Followup": {
+    labels: ["Incorrect"],
+    color: "pink",
   },
   "Other Inconsistency": {
     labels: ["Incorrect"],
+    color: "brown",
   },
 };
