@@ -62,11 +62,11 @@ export const ANNOTATED_DATA_STRUCTURE = {
 export const LABELS_STRUCTURE = {
   "Patient Information": {
     labels: ["Incorrect", "Omission"],
-    color: "blue",
+    color: "#8ecae6",
   },
   "Chronological Inconsistency": {
     labels: ["Incorrect", "Omission"],
-    color: "red",
+    color: "#a3b18a",
   },
   Reasoning: {
     labels: ["Incorrect", "Omission"],
@@ -74,11 +74,11 @@ export const LABELS_STRUCTURE = {
   },
   "MEI - Patient History": {
     labels: ["Incorrect", "Omission"],
-    color: "green",
+    color: "lightgreen",
   },
   "MEI - Symptom/Diagnosis/Medical Procedures": {
     labels: ["Incorrect", "Omission"],
-    color: "purple",
+    color: "#c8b6ff",
   },
   "MEI - Medicine Related Instructions": {
     labels: ["Incorrect", "Omission"],
@@ -86,10 +86,10 @@ export const LABELS_STRUCTURE = {
   },
   "MEI - Followup": {
     labels: ["Incorrect"],
-    color: "pink",
+    color: "#ffc8dd",
   },
   "Other Inconsistency": {
     labels: ["Incorrect"],
-    color: "brown",
+    color: "#dda15e",
   },
 };

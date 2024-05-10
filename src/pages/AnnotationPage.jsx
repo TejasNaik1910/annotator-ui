@@ -178,6 +178,7 @@ const AnnotationPage = (params) => {
         end_index: selectedRange.endOffset,
       });
       setAnnotatedData(updatedAnnotatedData);
+      highlightSelection(LABELS_STRUCTURE[type].color);
     }
   };
 
@@ -278,9 +279,9 @@ const AnnotationPage = (params) => {
     return { __html: highlightedText };
   };
   const handleDeleteHighlight = (index) => {
-    const updatedHighlights = [...highlights];
-    updatedHighlights.splice(index, 1);
-    setHighlights(updatedHighlights);
+    // const updatedHighlights = [...highlights];
+    // updatedHighlights.splice(index, 1);
+    // setHighlights(updatedHighlights);
   };
 
   const deleteAnnotation = (type, label, index) => {
@@ -288,6 +289,9 @@ const AnnotationPage = (params) => {
     updatedAnnotatedData[type][label].evidences.splice(index, 1);
     setAnnotatedData(updatedAnnotatedData);
 
+    const updatedHighlights = [...highlights];
+    updatedHighlights.splice(index, 1);
+    setHighlights(updatedHighlights);
     // deleteAnnotatedEvidenceHighlight()
   };
 
@@ -392,7 +396,7 @@ const AnnotationPage = (params) => {
           </tbody>
         </table>
       </div>
-      <button className={styles.submitButton} onClick={onSubmitButtonClicked}>
+      <button className={styles.submitButton} onClick={handleSubmit}>
         Submit
       </button>
     </div>
