@@ -54,11 +54,11 @@ function HighlightText() {
   const highlightSelection = (color) => {
     if (selectedRange) {
       const selectedText = selectedRange.toString();
-      const wordsBeforeSelection = selectedRange.startContainer.textContent.substring(0, selectedRange.startOffset).split(/\s+/).filter(Boolean).length;
-      const startOffset = wordsBeforeSelection + findNodeOffset(selectedRange.startContainer);
-      const selectedWordsCount = selectedText.split(/\s+/).filter(Boolean).length;
-      const endOffset = startOffset + selectedWordsCount - 1;
-  
+      const startOffset =
+        selectedRange.startOffset +
+        findNodeOffset(selectedRange.startContainer);
+      const endOffset = startOffset + selectedText.length;
+
       const highlight = {
         startOffset,
         endOffset,
@@ -66,7 +66,7 @@ function HighlightText() {
         text: selectedText,
         color,
       };
-  
+
       setHighlights([...highlights, highlight]);
       setSelectedRange(null);
     }
@@ -76,11 +76,11 @@ function HighlightText() {
     let offset = 0;
     while (node.previousSibling) {
       node = node.previousSibling;
-      offset += node.textContent.split(/\s+/).filter(Boolean).length; // Count words in a zero-based way
+      offset += node.textContent.length;
     }
     return offset;
   };
-  
+
   const handleMouseUp = () => {
     const selection = window.getSelection();
     if (selection.rangeCount > 0 && selection.toString().trim() !== "") {
@@ -177,42 +177,33 @@ function HighlightText() {
     }
   };
   
+
   const renderHighlightedText = () => {
-    // Split the initial text into words while keeping track of their indices
-    const words = initialText.split(/\s+/);
-    let highlightedText = initialText;
-    let currentIndex = 0;
-    let wordPositions = [];
-
-    // Compute the start and end character indices for each word
-    words.forEach(word => {
-        let start = currentIndex;
-        let end = start + word.length;
-        wordPositions.push({ start, end });
-        currentIndex = end + 1; // Move index to after the space following this word
-    });
-
     // Sort highlights by their starting position in descending order
-    const sortedHighlights = [...highlights].sort((a, b) => b.startOffset - a.startOffset);
+    const sortedHighlights = [...highlights].sort(
+      (a, b) => b.startOffset - a.startOffset
+    );
 
-    // Apply highlights to the text using the computed word positions
-    sortedHighlights.forEach(highlight => {
-        const startCharIndex = wordPositions[highlight.startOffset].start;
-        const endCharIndex = wordPositions[highlight.endOffset].end;
+    // Start with plain text, replacing highlighted parts with span tags
+    let highlightedText = initialText;
 
-        // Extract the text to be highlighted and wrap it in a span with a style
-        const highlightedPart = highlightedText.substring(startCharIndex, endCharIndex);
-        const spanTag = `<span style="background-color: ${highlight.color};">${highlightedPart}</span>`;
+    sortedHighlights.forEach((highlight) => {
+      // Extract text between startOffset and endOffset
+      const highlightedPart = highlightedText.substring(
+        highlight.startOffset,
+        highlight.endOffset
+      );
+      const spanTag = `<span style="background-color: ${highlight.color};">${highlightedPart}</span>`;
 
-        // Reconstruct the text with the highlighted section
-        highlightedText = highlightedText.substring(0, startCharIndex) +
-            spanTag +
-            highlightedText.substring(endCharIndex);
+      // Replace the specific range with the span tag
+      highlightedText =
+        highlightedText.substring(0, highlight.startOffset) +
+        spanTag +
+        highlightedText.substring(highlight.endOffset);
     });
 
     return { __html: highlightedText };
   };
-
   const handleDeleteHighlight = (index) => {
     const updatedHighlights = [...highlights];
     updatedHighlights.splice(index, 1);
@@ -290,13 +281,8 @@ function HighlightText() {
                 <td style={{ border: "1px solid black", padding: "8px" }}>
                   {highlight.text}
                 </td>
-                {/* <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {highlight.startOffset} to {highlight.endOffset}
-                </td> */}
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {highlight.startOffset === highlight.endOffset ?
-                    highlight.startOffset :
-                    `${highlight.startOffset} to ${highlight.endOffset}`}
+                  {highlight.startOffset} to {highlight.endOffset}
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
                   {highlight.color}
