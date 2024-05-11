@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
-import AnnotationPage from "./pages/AnnotationPage";
 
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
@@ -27,7 +26,16 @@ function HighlightText() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const textAreaRef = useRef(null);
 
-  const labels = ["hallucinationA", "hallucinationB", "Not Specified"];
+  const labels =["Incorrect Patient Information", "Omitted Patient Information",
+    "Incorrect Patient History",
+    "Omitted Patient History",
+    "Incorrect Symptoms/Diagnosis",
+    "Omitted Symptoms/Diagnosis",
+    "Incorrect Medicinal Instructions",
+    "Omitted Medicinal Instructions",
+    "Incorrect Followup",
+    "Omitted Followup"
+];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -107,7 +115,7 @@ function HighlightText() {
     const blob = new Blob([jsonString], { type: "application/json" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "annotations.json";
+    link.download = `annotations-${model}-${id}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -117,25 +125,58 @@ function HighlightText() {
 
   const labelToColor = (label) => {
     switch (label) {
-      case "hallucinationA":
-        return "yellow";
-      case "hallucinationB":
-        return "blue";
+      case "Incorrect Patient Information":
+        return "#ff6ec7"; // Neon Pink
+      case "Omitted Patient Information":
+        return "#00ffff"; // Neon Cyan
+      case "Incorrect Patient History":
+        return "#ffff00"; // Neon Yellow
+      case "Omitted Patient History":
+        return "#ffa500"; // Neon Orange
+      case "Incorrect Symptoms/Diagnosis":
+        return "#39ff14"; // Neon Green
+      case "Omitted Symptoms/Diagnosis":
+        return "#ff00ff"; // Neon Magenta
+      case "Incorrect Medicinal Instructions":
+        return "#00ff00"; // Neon Green (alternate)
+      case "Omitted Medicinal Instructions":
+        return "#7df9ff"; // Neon Blue
+      case "Incorrect Followup":
+        return "#ff007f"; // Neon Pink (alternate)
+      case "Omitted Followup":
+        return "#ff91a4"; // Neon Peach
       default:
         return "transparent";
     }
   };
-
+  
   const colorToLabel = (color) => {
     switch (color) {
-      case "yellow":
-        return "hallucinationA";
-      case "blue":
-        return "hallucinationB";
+      case "#ff6ec7":
+        return "Incorrect Patient Information";
+      case "#00ffff":
+        return "Omitted Patient Information";
+      case "#ffff00":
+        return "Incorrect Patient History";
+      case "#ffa500":
+        return "Omitted Patient History";
+      case "#39ff14":
+        return "Incorrect Symptoms/Diagnosis";
+      case "#ff00ff":
+        return "Omitted Symptoms/Diagnosis";
+      case "#00ff00":
+        return "Incorrect Medicinal Instructions";
+      case "#7df9ff":
+        return "Omitted Medicinal Instructions";
+      case "#ff007f":
+        return "Incorrect Followup";
+      case "#ff91a4":
+        return "Omitted Followup";
       default:
         return "Not Specified";
     }
   };
+  
 
   const renderHighlightedText = () => {
     // Sort highlights by their starting position in descending order
@@ -263,8 +304,7 @@ function HighlightText() {
 const App = () => (
   <Router>
     <Route path="/:model/:id">
-      {/* <HighlightText /> */}
-      <AnnotationPage />
+       <HighlightText />
     </Route>
   </Router>
 );
