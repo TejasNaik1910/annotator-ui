@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
+// import AnnotationPage from "./pages/AnnotationPage";
 
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
@@ -176,7 +177,6 @@ function HighlightText() {
         return "Not Specified";
     }
   };
-  
 
   const renderHighlightedText = () => {
     // Sort highlights by their starting position in descending order
@@ -205,6 +205,40 @@ function HighlightText() {
     return { __html: highlightedText };
   };
 
+    const getWordOffsets = (text, charStart, charEnd) => {
+      // Split text into words, considering punctuation as separate "words"
+      const regex = /(\W+)/;  // Matches any non-word character including spaces
+      let words = text.split(regex).filter(Boolean); // Split and filter out empty strings
+      let currentPos = 0; // Current position in the string
+      let startWordIndex = -1;
+      let endWordIndex = -1;
+      let wordIndex = 0;
+  
+      words.forEach((word, index) => {
+          let wordStart = currentPos;
+          let wordEnd = wordStart + word.length - 1;
+  
+          if (charStart >= wordStart && charStart <= wordEnd) {
+              startWordIndex = wordIndex; // Set start index when range starts within this word
+          }
+          if (charEnd >= wordStart && charEnd <= wordEnd) {
+              endWordIndex = wordIndex; // Set end index when range ends within this word
+          }
+  
+          // Update current position to the next character after the current word
+          currentPos += word.length;
+  
+          // Check if the word is not just punctuation or space
+          if (!word.match(/^\W+$/)) {
+              wordIndex++; // Increment word index only for actual words
+          }
+      });
+  
+      return { startWordIndex, endWordIndex };
+  };
+  
+  
+
   const handleDeleteHighlight = (index) => {
     // Ask the user to confirm the deletion
     const confirmDelete = window.confirm("Are you sure you want to delete this highlight?");
@@ -215,7 +249,6 @@ function HighlightText() {
     }
   };
   
-
   return (
     <div ref={textAreaRef} style={{ textAlign: "center" }}>
       <h1 style={{ fontWeight: "bold", color: "black" }}>
@@ -258,7 +291,7 @@ function HighlightText() {
       </section>
       <section>
         <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
-        <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
+        {/* <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
           <thead>
             <tr>
               <th style={{ border: "1px solid black", padding: "8px" }}>
@@ -301,7 +334,42 @@ function HighlightText() {
               </tr>
             ))}
           </tbody>
+        </table> */}
+        <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
+              <th style={{ border: "1px solid black", padding: "8px" }}>Hallucination Type</th>
+              <th style={{ border: "1px solid black", padding: "8px" }}>Evidence</th>
+              {/* <th style={{ border: "1px solid black", padding: "8px" }}>Evidence Indexes</th> */}
+              <th style={{ border: "1px solid black", padding: "8px" }}>Word Count Indexes</th>
+              <th style={{ border: "1px solid black", padding: "8px" }}>Color</th>
+              <th style={{ border: "1px solid black", padding: "8px" }}>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {highlights.map((highlight, index) => {
+              const { startWordIndex, endWordIndex } = getWordOffsets(initialText, highlight.startOffset, highlight.endOffset);
+              return (
+                <tr key={index}>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>{highlight.label}</td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>{highlight.text}</td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    {endWordIndex > startWordIndex ? `${startWordIndex} to ${endWordIndex}` : `${startWordIndex}`}
+                  </td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>{highlight.color}</td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    <button onClick={() => handleDeleteHighlight(index)}>Delete</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+
+          
+
+
         </table>
+
       </section>
     </div>
   );
