@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
 
+import AnnotationPage from "./pages/AnnotationPage";
+
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
   const [initialText, setText] = useState("");
@@ -26,7 +28,9 @@ function HighlightText() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const textAreaRef = useRef(null);
 
-  const labels =["Incorrect Patient Information", "Omitted Patient Information",
+  const labels = [
+    "Incorrect Patient Information",
+    "Omitted Patient Information",
     "Incorrect Patient History",
     "Omitted Patient History",
     "Incorrect Symptoms/Diagnosis",
@@ -34,8 +38,8 @@ function HighlightText() {
     "Incorrect Medicinal Instructions",
     "Omitted Medicinal Instructions",
     "Incorrect Followup",
-    "Omitted Followup"
-];
+    "Omitted Followup",
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -149,7 +153,7 @@ function HighlightText() {
         return "transparent";
     }
   };
-  
+
   const colorToLabel = (color) => {
     switch (color) {
       case "#ff6ec7":
@@ -176,7 +180,6 @@ function HighlightText() {
         return "Not Specified";
     }
   };
-  
 
   const renderHighlightedText = () => {
     // Sort highlights by their starting position in descending order
@@ -207,14 +210,15 @@ function HighlightText() {
 
   const handleDeleteHighlight = (index) => {
     // Ask the user to confirm the deletion
-    const confirmDelete = window.confirm("Are you sure you want to delete this highlight?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this highlight?"
+    );
     if (confirmDelete) {
       const updatedHighlights = [...highlights];
       updatedHighlights.splice(index, 1);
       setHighlights(updatedHighlights);
     }
   };
-  
 
   return (
     <div ref={textAreaRef} style={{ textAlign: "center" }}>
@@ -310,7 +314,8 @@ function HighlightText() {
 const App = () => (
   <Router>
     <Route path="/:model/:id">
-       <HighlightText />
+      {/* <HighlightText /> */}
+      <AnnotationPage />
     </Route>
   </Router>
 );

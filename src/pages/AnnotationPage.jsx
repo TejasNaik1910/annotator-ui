@@ -278,21 +278,23 @@ const AnnotationPage = (params) => {
 
     return { __html: highlightedText };
   };
-  const handleDeleteHighlight = (index) => {
-    // const updatedHighlights = [...highlights];
-    // updatedHighlights.splice(index, 1);
-    // setHighlights(updatedHighlights);
-  };
 
   const deleteAnnotation = (type, label, index) => {
-    let updatedAnnotatedData = { ...annotatedData };
-    updatedAnnotatedData[type][label].evidences.splice(index, 1);
-    setAnnotatedData(updatedAnnotatedData);
+    // Ask the user to confirm the deletion
+    const isDeleteConfirmed = window.confirm(
+      "Are you sure you want to delete this highlight?"
+    );
 
-    const updatedHighlights = [...highlights];
-    updatedHighlights.splice(index, 1);
-    setHighlights(updatedHighlights);
-    // deleteAnnotatedEvidenceHighlight()
+    if (isDeleteConfirmed) {
+      let updatedAnnotatedData = { ...annotatedData };
+      updatedAnnotatedData[type][label].evidences.splice(index, 1);
+      setAnnotatedData(updatedAnnotatedData);
+
+      const updatedHighlights = [...highlights];
+      updatedHighlights.splice(index, 1);
+      setHighlights(updatedHighlights);
+      // deleteAnnotatedEvidenceHighlight()
+    }
   };
 
   return (
@@ -345,16 +347,16 @@ const AnnotationPage = (params) => {
           </select>
         </div>
       )}
+      <h2 className={styles.summarySubHeading}>Summary</h2>
       <div className={styles.summaryContainer}>
-        <h2 className={styles.summarySubHeading}>Summary</h2>
         <p
           onMouseUp={handleMouseUp}
           className={styles.summaryText}
           dangerouslySetInnerHTML={renderHighlightedText()}
         />
       </div>
+      <h2 className={styles.tableHeading}>Annotation Table</h2>
       <div className={styles.tableContainer}>
-        <h2>Annotation Table</h2>
         <table className={styles.annotationTable}>
           <thead>
             <tr>
