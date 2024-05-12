@@ -153,7 +153,7 @@ const AnnotationPage = (params) => {
       const rect = range.getBoundingClientRect();
       setSelectedRange(range);
 
-      if (rect.left + dropDownWidth > window.innerWidth) {
+      if (rect.left + dropDownWidth + subDropDownWidth > window.innerWidth) {
         let dropDownStartX = rect.right - dropDownWidth;
         setDropdownPosition({
           x: dropDownStartX,
