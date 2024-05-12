@@ -146,18 +146,34 @@ const AnnotationPage = (params) => {
 
   const handleMouseUp = () => {
     const selection = window.getSelection();
+    const dropDownWidth = 305;
+    const subDropDownWidth = 192;
     if (selection.rangeCount > 0 && selection.toString().trim() !== "") {
       const range = selection.getRangeAt(0);
       const rect = range.getBoundingClientRect();
       setSelectedRange(range);
-      setDropdownPosition({
-        x: rect.left,
-        y: rect.bottom + window.scrollY,
-      });
-      setSubDropdownPosition({
-        x: rect.left + 200,
-        y: rect.bottom + window.scrollY,
-      });
+
+      if (rect.left + dropDownWidth > window.innerWidth) {
+        let dropDownStartX = rect.right - dropDownWidth;
+        setDropdownPosition({
+          x: dropDownStartX,
+          y: rect.bottom + window.scrollY,
+        });
+        let subDropDownStartX = dropDownStartX - subDropDownWidth;
+        setSubDropdownPosition({
+          x: subDropDownStartX,
+          y: rect.bottom + window.scrollY,
+        });
+      } else {
+        setDropdownPosition({
+          x: rect.left,
+          y: rect.bottom + window.scrollY,
+        });
+        setSubDropdownPosition({
+          x: rect.left + dropDownWidth,
+          y: rect.bottom + window.scrollY,
+        });
+      }
       setShowDropDown(true);
     }
   };
@@ -302,6 +318,7 @@ const AnnotationPage = (params) => {
       <h1 className={styles.title}>Annotation Dashboard - UMass x Mendel.ai</h1>
       {showDropDown && (
         <select
+          className={styles.selectDropdown}
           ref={dropDownRef}
           value={
             selectedHallucinationType
@@ -326,6 +343,7 @@ const AnnotationPage = (params) => {
       {showSubDropDown && (
         <div>
           <select
+            className={styles.selectDropdown}
             ref={subDropDownRef}
             id="subOption"
             value={selectedHallucinationLabel || "Choose Hallucination Label"}

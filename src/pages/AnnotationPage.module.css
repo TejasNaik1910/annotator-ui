@@ -25,6 +25,17 @@
   overflow: scroll;
 }
 
+.selectDropdown {
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.selectDropdown:focus {
+  outline: none;
+}
+
 .tableHeading {
   text-align: left;
   margin-top: 2rem;
