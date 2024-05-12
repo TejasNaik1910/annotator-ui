@@ -401,8 +401,8 @@ function HighlightText() {
 const App = () => (
   <Router>
     <Route path="/:model/:id">
-      {/* <HighlightText /> */}
-      <AnnotationPage />
+      <HighlightText />
+      {/* <AnnotationPage /> */}
     </Route>
   </Router>
 );

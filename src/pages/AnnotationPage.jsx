@@ -398,7 +398,7 @@ const AnnotationPage = (params) => {
                       <td>{evidence.text}</td>
                       <td>{evidence.start_index}</td>
                       <td>{evidence.end_index}</td>
-                      <td>Red</td>
+                      <td>{LABELS_STRUCTURE[type].colorLabel}</td>
                       <td>
                         <button
                           onClick={() =>
