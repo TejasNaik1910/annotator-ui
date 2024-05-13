@@ -277,11 +277,13 @@ function HighlightText() {
         </select>
       )}
       <section>
+        <div style={{ maxHeight: "400px", overflowY: "scroll" }}>
         <p
           onMouseUp={handleMouseUp}
           style={{ cursor: "pointer", userSelect: "text" }}
           dangerouslySetInnerHTML={renderHighlightedText()}
         />
+        </div>
       </section>
       <section style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
       <div style={{ width: "40%" }}>
@@ -292,7 +294,7 @@ function HighlightText() {
             style={{ width: "60%", height: "100px" }}
           />
         </div>
-        <div>
+        <div style={{ maxHeight: "400px", overflowY: "scroll" }}>
         <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
         <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
           <thead>
