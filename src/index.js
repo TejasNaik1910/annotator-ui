@@ -25,6 +25,8 @@ function HighlightText() {
   const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
   const [selectedRange, setSelectedRange] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [IncorrectReasoning, setIncorrectReasoning] = useState("");
+  const [ChronologicalIncon, setChronologicalIncon] = useState("");
   const textAreaRef = useRef(null);
 
   const labels =["Incorrect Patient Information", "Omitted Patient Information",
@@ -112,7 +114,7 @@ function HighlightText() {
       return acc;
     }, {});
 
-    const jsonString = JSON.stringify(annotations, null, 2);
+    const jsonString = JSON.stringify({ annotations, IncorrectReasoning, ChronologicalIncon }, null, 2);
     const blob = new Blob([jsonString], { type: "application/json" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -279,62 +281,17 @@ function HighlightText() {
           dangerouslySetInnerHTML={renderHighlightedText()}
         />
       </section>
-      <section>
-        <button onClick={handleSubmit} disabled={isSubmitted}>
-          Submit
-        </button>
-        {isSubmitted && (
-          <h1 style={{ fontWeight: "bold", color: "darkblue" }}>
-            ANNOTATION COMPLETED
-          </h1>
-        )}
-      </section>
-      <section>
+      <section style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+      <div style={{ width: "40%" }}>
+          <h3 style={{ fontWeight: "bold" }}>Incorrect Reasoning</h3>
+          <textarea
+            value={IncorrectReasoning}
+            onChange={(e) => setIncorrectReasoning(e.target.value)}
+            style={{ width: "60%", height: "100px" }}
+          />
+        </div>
+        <div>
         <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
-        {/* <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Hallucination Type
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Evidence
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Evidence Indexes
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Color
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Delete
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {highlights.map((highlight, index) => (
-              <tr key={index}>
-                <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {highlight.label}
-                </td>
-                <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {highlight.text}
-                </td>
-                <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {highlight.startOffset} to {highlight.endOffset}
-                </td>
-                <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {highlight.color}
-                </td>
-                <td style={{ border: "1px solid black", padding: "8px" }}>
-                  <button onClick={() => handleDeleteHighlight(index)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
         <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
           <thead>
             <tr>
@@ -364,12 +321,26 @@ function HighlightText() {
               );
             })}
           </tbody>
-
-          
-
-
         </table>
-
+        </div>
+        <div style={{ width: "40%" }}>
+          <h3 style={{ fontWeight: "bold" }}>Chronological Inconsistency</h3>
+          <textarea
+            value={ChronologicalIncon}
+            onChange={(e) => setChronologicalIncon(e.target.value)}
+            style={{ width: "60%", height: "100px" }}
+          />
+        </div>
+      </section>
+      <section>
+        <button onClick={handleSubmit} disabled={isSubmitted}>
+          Submit
+        </button>
+        {isSubmitted && (
+          <h1 style={{ fontWeight: "bold", color: "darkblue" }}>
+            ANNOTATION COMPLETED
+          </h1>
+        )}
       </section>
     </div>
   );
