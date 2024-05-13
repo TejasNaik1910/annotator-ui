@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
 // import AnnotationPage from "./pages/AnnotationPage";
 
-import AnnotationPage from "./pages/AnnotationPage";
-
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
   const [initialText, setText] = useState("");
