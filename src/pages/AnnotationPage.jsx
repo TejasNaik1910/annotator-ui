@@ -146,18 +146,34 @@ const AnnotationPage = (params) => {
 
   const handleMouseUp = () => {
     const selection = window.getSelection();
+    const dropDownWidth = 305;
+    const subDropDownWidth = 192;
     if (selection.rangeCount > 0 && selection.toString().trim() !== "") {
       const range = selection.getRangeAt(0);
       const rect = range.getBoundingClientRect();
       setSelectedRange(range);
-      setDropdownPosition({
-        x: rect.left,
-        y: rect.bottom + window.scrollY,
-      });
-      setSubDropdownPosition({
-        x: rect.left + 200,
-        y: rect.bottom + window.scrollY,
-      });
+
+      if (rect.left + dropDownWidth + subDropDownWidth > window.innerWidth) {
+        let dropDownStartX = rect.right - dropDownWidth;
+        setDropdownPosition({
+          x: dropDownStartX,
+          y: rect.bottom + window.scrollY,
+        });
+        let subDropDownStartX = dropDownStartX - subDropDownWidth;
+        setSubDropdownPosition({
+          x: subDropDownStartX,
+          y: rect.bottom + window.scrollY,
+        });
+      } else {
+        setDropdownPosition({
+          x: rect.left,
+          y: rect.bottom + window.scrollY,
+        });
+        setSubDropdownPosition({
+          x: rect.left + dropDownWidth,
+          y: rect.bottom + window.scrollY,
+        });
+      }
       setShowDropDown(true);
     }
   };
@@ -278,21 +294,23 @@ const AnnotationPage = (params) => {
 
     return { __html: highlightedText };
   };
-  const handleDeleteHighlight = (index) => {
-    // const updatedHighlights = [...highlights];
-    // updatedHighlights.splice(index, 1);
-    // setHighlights(updatedHighlights);
-  };
 
   const deleteAnnotation = (type, label, index) => {
-    let updatedAnnotatedData = { ...annotatedData };
-    updatedAnnotatedData[type][label].evidences.splice(index, 1);
-    setAnnotatedData(updatedAnnotatedData);
+    // Ask the user to confirm the deletion
+    const isDeleteConfirmed = window.confirm(
+      "Are you sure you want to delete this highlight?"
+    );
 
-    const updatedHighlights = [...highlights];
-    updatedHighlights.splice(index, 1);
-    setHighlights(updatedHighlights);
-    // deleteAnnotatedEvidenceHighlight()
+    if (isDeleteConfirmed) {
+      let updatedAnnotatedData = { ...annotatedData };
+      updatedAnnotatedData[type][label].evidences.splice(index, 1);
+      setAnnotatedData(updatedAnnotatedData);
+
+      const updatedHighlights = [...highlights];
+      updatedHighlights.splice(index, 1);
+      setHighlights(updatedHighlights);
+      // deleteAnnotatedEvidenceHighlight()
+    }
   };
 
   return (
@@ -300,6 +318,7 @@ const AnnotationPage = (params) => {
       <h1 className={styles.title}>Annotation Dashboard - UMass x Mendel.ai</h1>
       {showDropDown && (
         <select
+          className={styles.selectDropdown}
           ref={dropDownRef}
           value={
             selectedHallucinationType
@@ -324,6 +343,7 @@ const AnnotationPage = (params) => {
       {showSubDropDown && (
         <div>
           <select
+            className={styles.selectDropdown}
             ref={subDropDownRef}
             id="subOption"
             value={selectedHallucinationLabel || "Choose Hallucination Label"}
@@ -345,16 +365,16 @@ const AnnotationPage = (params) => {
           </select>
         </div>
       )}
+      <h2 className={styles.summarySubHeading}>Summary</h2>
       <div className={styles.summaryContainer}>
-        <h2 className={styles.summarySubHeading}>Summary</h2>
         <p
           onMouseUp={handleMouseUp}
           className={styles.summaryText}
           dangerouslySetInnerHTML={renderHighlightedText()}
         />
       </div>
+      <h2 className={styles.tableHeading}>Annotation Table</h2>
       <div className={styles.tableContainer}>
-        <h2>Annotation Table</h2>
         <table className={styles.annotationTable}>
           <thead>
             <tr>
@@ -378,7 +398,7 @@ const AnnotationPage = (params) => {
                       <td>{evidence.text}</td>
                       <td>{evidence.start_index}</td>
                       <td>{evidence.end_index}</td>
-                      <td>Red</td>
+                      <td>{LABELS_STRUCTURE[type].colorLabel}</td>
                       <td>
                         <button
                           onClick={() =>
