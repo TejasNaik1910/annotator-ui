@@ -25,8 +25,10 @@ function HighlightText() {
   const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
   const [selectedRange, setSelectedRange] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [IncorrectReasoning, setIncorrectReasoning] = useState("");
-  const [ChronologicalIncon, setChronologicalIncon] = useState("");
+  const [showIncorrectReasoning, setShowIncorrectReasoning] = useState(false);
+  const [showChronologicalIncon, setShowChronologicalIncon] = useState(false);
+  const [incorrectReasoningText, setIncorrectReasoningText] = useState("");
+  const [chronologicalInconText, setChronologicalInconText] = useState("");
   const textAreaRef = useRef(null);
 
   const labels = [
@@ -116,7 +118,7 @@ function HighlightText() {
       return acc;
     }, {});
 
-    const jsonString = JSON.stringify({ annotations, IncorrectReasoning, ChronologicalIncon }, null, 2);
+    const jsonString = JSON.stringify({ annotations, incorrectReasoningText, chronologicalInconText }, null, 2);
     const blob = new Blob([jsonString], { type: "application/json" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -253,12 +255,36 @@ function HighlightText() {
     }
   };
 
+  const handleReasoningSubmit = () => {
+    setHighlights([...highlights, {
+      startOffset: "",
+      endOffset: "",
+      label: "Incorrect Reasoning",
+      text: incorrectReasoningText,
+      color: ""
+    }]);
+    setShowIncorrectReasoning(false);
+    setIncorrectReasoningText("");
+  };
+
+  const handleChronologicalSubmit = () => {
+    setHighlights([...highlights, {
+      startOffset: "",
+      endOffset: "",
+      label: "Chronological Inconsistency",
+      text: chronologicalInconText,
+      color: ""
+    }]);
+    setShowChronologicalIncon(false);
+    setChronologicalInconText("");
+  };
+
   return (
     <div ref={textAreaRef} style={{ textAlign: "center" }}>
       <h1 style={{ fontWeight: "bold", color: "black" }}>
         Annotation UI - UMass X Mendel AI
       </h1>
-      <h2 style={{ fontWeight: "bold", color: "black", }}>
+      <h2 style={{ fontWeight: "bold", color: "black" }}>
         Summary
       </h2>
       {showDropdown && (
@@ -281,97 +307,136 @@ function HighlightText() {
       )}
       <section>
         <div style={{ maxHeight: "30vh", overflowY: "scroll" }}>
-        <p
-          onMouseUp={handleMouseUp}
-          style={{ cursor: "pointer", userSelect: "text" }}
-          dangerouslySetInnerHTML={renderHighlightedText()}
-        />
+          <p
+            onMouseUp={handleMouseUp}
+            style={{ cursor: "pointer", userSelect: "text" }}
+            dangerouslySetInnerHTML={renderHighlightedText()}
+          />
         </div>
       </section>
-      <section style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-      <div style={{ width: "40%" }}>
-          <h3 style={{ fontWeight: "bold" }}>Incorrect Reasoning</h3>
-          <textarea
-            value={IncorrectReasoning}
-            onChange={(e) => setIncorrectReasoning(e.target.value)}
-            style={{ width: "60%", height: "100px" }}
-          />
+      <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+        <div style={{ width: "50%", textAlign: "center", position: "relative" }}>
+          <button style={{ backgroundColor: "blue", color: "white" }} onClick={() => setShowIncorrectReasoning(!showIncorrectReasoning)}>
+            Incorrect Reasoning
+          </button>
+          {showIncorrectReasoning && (
+            <div style={{ marginTop: "10px" }}>
+              <textarea
+                value={incorrectReasoningText}
+                onChange={(e) => setIncorrectReasoningText(e.target.value)}
+                style={{ width: "300px", height: "100px" }}
+              />
+              <div style={{ marginTop: "10px" }}>
+                <button onClick={handleReasoningSubmit}>Submit</button>
+                <button onClick={() => setShowIncorrectReasoning(false)}>Close</button>
+              </div>
+            </div>
+          )}
         </div>
-        <div style={{ maxHeight: "30vh", overflowY: "scroll" }}>
-        <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
-        <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Hallucination Type
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Evidence
-              </th>
-              {/* <th style={{ border: "1px solid black", padding: "8px" }}>Evidence Indexes</th> */}
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Word Count Indexes
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Color
-              </th>
-              <th style={{ border: "1px solid black", padding: "8px" }}>
-                Delete
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {highlights.map((highlight, index) => {
-              const { startWordIndex, endWordIndex } = getWordOffsets(
-                initialText,
-                highlight.startOffset,
-                highlight.endOffset
-              );
-              return (
-                <tr key={index}>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>
-                    {highlight.label}
-                  </td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>
-                    {highlight.text}
-                  </td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>
-                    {endWordIndex > startWordIndex
-                      ? `${startWordIndex} to ${endWordIndex}`
-                      : `${startWordIndex}`}
-                  </td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>
-                    {highlight.color}
-                  </td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>
-                    <button onClick={() => handleDeleteHighlight(index)}>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div style={{ width: "50%", textAlign: "center", position: "relative" }}>
+          <button style={{ backgroundColor: "blue", color: "white" }} onClick={() => setShowChronologicalIncon(!showChronologicalIncon)}>
+            Chronological Inconsistency
+          </button>
+          {showChronologicalIncon && (
+            <div style={{ marginTop: "10px" }}>
+              <textarea
+                value={chronologicalInconText}
+                onChange={(e) => setChronologicalInconText(e.target.value)}
+                style={{ width: "300px", height: "100px" }}
+              />
+              <div style={{ marginTop: "10px" }}>
+                <button onClick={handleChronologicalSubmit}>Submit</button>
+                <button onClick={() => setShowChronologicalIncon(false)}>Close</button>
+              </div>
+            </div>
+          )}
         </div>
-        <div style={{ width: "40%" }}>
-          <h3 style={{ fontWeight: "bold" }}>Chronological Inconsistency</h3>
-          <textarea
-            value={ChronologicalIncon}
-            onChange={(e) => setChronologicalIncon(e.target.value)}
-            style={{ width: "60%", height: "100px" }}
-          />
+      </section>
+      <section style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", width: "100%" }}>
+        <div style={{ width: "100%", maxHeight: "30vh", overflowY: "scroll" }}>
+          <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
+          <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Hallucination Type
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Evidence
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Word Count Index
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Color
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {highlights.map((highlight, index) => {
+                const { startWordIndex, endWordIndex } = getWordOffsets(
+                  initialText,
+                  highlight.startOffset,
+                  highlight.endOffset
+                );
+                return (
+                  <tr key={index}>
+                    <td style={{ border: "1px solid black", padding: "8px" }}>
+                      {highlight.label}
+                    </td>
+                    <td style={{ border: "1px solid black", padding: "8px" }}>
+                      {highlight.text}
+                    </td>
+                    <td style={{ border: "1px solid black", padding: "8px" }}>
+                      {endWordIndex - startWordIndex > 1
+                        ? `${startWordIndex} to ${endWordIndex}`
+                        : `${startWordIndex}`}
+                    </td>
+                    <td style={{ border: "1px solid black", padding: "8px" }}>
+                      {highlight.color}
+                    </td>
+                    <td style={{ border: "1px solid black", padding: "8px" }}>
+                      <button style={{ backgroundColor: "black", color: "white", fontWeight: "bold" }}  onClick={() => handleDeleteHighlight(index)}>
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </section>
       <section>
-        <button onClick={handleSubmit} disabled={isSubmitted}>
-          Submit
+        {/* <button style={{ backgroundColor: "blueviolet", color: "white", fontWeight: "bold" }} onClick={handleSubmit} disabled={isSubmitted}>
+          SUBMIT
+        </button>
+        {isSubmitted && (
+          <h1 style={{ fontWeight: "bold", color: "darkblue" }}>
+            ANNOTATION COMPLETED
+          </h1>
+        )} */}
+        <button
+          style={{
+            backgroundColor: isSubmitted ? "grey" : "blueviolet",
+            color: "white",
+            fontWeight: "bold",
+            cursor: isSubmitted ? "not-allowed" : "pointer",
+          }}
+          onClick={handleSubmit}
+          disabled={isSubmitted}
+        >
+          SUBMIT
         </button>
         {isSubmitted && (
           <h1 style={{ fontWeight: "bold", color: "darkblue" }}>
             ANNOTATION COMPLETED
           </h1>
         )}
+
       </section>
     </div>
   );
