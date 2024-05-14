@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
-// import AnnotationPage from "./pages/AnnotationPage";
+import AnnotationPage from "./pages/AnnotationPage";
 
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
@@ -258,6 +258,9 @@ function HighlightText() {
       <h1 style={{ fontWeight: "bold", color: "black" }}>
         Annotation UI - UMass X Mendel AI
       </h1>
+      <h2 style={{ fontWeight: "bold", color: "black", }}>
+        Summary
+      </h2>
       {showDropdown && (
         <select
           value="Select Label"
@@ -277,7 +280,7 @@ function HighlightText() {
         </select>
       )}
       <section>
-        <div style={{ maxHeight: "400px", overflowY: "scroll" }}>
+        <div style={{ maxHeight: "30vh", overflowY: "scroll" }}>
         <p
           onMouseUp={handleMouseUp}
           style={{ cursor: "pointer", userSelect: "text" }}
@@ -294,7 +297,7 @@ function HighlightText() {
             style={{ width: "60%", height: "100px" }}
           />
         </div>
-        <div style={{ maxHeight: "400px", overflowY: "scroll" }}>
+        <div style={{ maxHeight: "30vh", overflowY: "scroll" }}>
         <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
         <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
           <thead>
