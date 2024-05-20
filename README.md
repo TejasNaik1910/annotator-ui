@@ -1,14 +1,38 @@
-# annotator-ui
+# Annotator UI
 
-In the project directory, you can run:
+This project is a web application for text annotation.
 
-### `npm start`
+## Getting Started
 
-This runs the app in the development mode.\
-Open [http://localhost:3000/model/note_id](http://localhost:3000/${model}/${id}) to view it in your browser.
+To run the application in development mode, navigate to the project directory and execute the following command:
 
-Please mention the model and note_id as URL parameters while loading the webapp.\
-For example, for model gpt35 and noteid 10000935-DS-21, one should use the following URL: [http://localhost:3000/gpt35/10000935-DS-21](http://localhost:3000/gpt35/10000935-DS-21)
+```bash
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This will start the development server. Open http://localhost:3000 in your browser to view the app.
+
+## Usage
+When accessing the web application, you need to specify the model and note_id as URL parameters.
+
+For example:
+
+```bash
+http://localhost:3000/gpt35/10000935-DS-21
+```
+
+In this example:
+
+the model is gpt35
+the note_id is 10000935-DS-21
+
+## URL Format
+
+```bash
+http://localhost:3000/{model}/{note_id}
+```
+Replace {model} and {note_id} with the appropriate values for your use case.
+
+## Features
+The page automatically reloads when you make changes to the source files.
+Words can be highlighted only once, meaning no overlapping highlights are allowed.
