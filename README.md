@@ -23,7 +23,7 @@ http://localhost:3000/gpt35/10000935-DS-21
 
 In this example:
 
-the model is gpt35
+the model is gpt35 \
 the note_id is 10000935-DS-21
 
 ## URL Format
@@ -34,5 +34,5 @@ http://localhost:3000/{model}/{note_id}
 Replace {model} and {note_id} with the appropriate values for your use case.
 
 ## Features
-The page automatically reloads when you make changes to the source files.
+The page automatically reloads when you make changes to the source files.\
 Words can be highlighted only once, meaning no overlapping highlights are allowed.
