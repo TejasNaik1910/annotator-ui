@@ -1,0 +1,6 @@
+{
+    "navigationFallback": {
+      "rewriteLinks": "/*/",
+      "virtualPath": "/index.html"
+    }
+  }
