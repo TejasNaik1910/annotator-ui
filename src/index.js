@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
-import AnnotationPage from "./pages/AnnotationPage";
+//import AnnotationPage from "./pages/AnnotationPage";
 
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
@@ -118,7 +118,7 @@ function HighlightText() {
       return acc;
     }, {});
 
-    const jsonString = JSON.stringify({ annotations, incorrectReasoningText, chronologicalInconText }, null, 2);
+    const jsonString = JSON.stringify(annotations, null, 2);
     const blob = new Blob([jsonString], { type: "application/json" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
