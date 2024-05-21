@@ -141,15 +141,15 @@ function HighlightText() {
       case "Omitted Patient History":
         return "#ffa500"; // Neon Orange
       case "Incorrect Symptoms/Diagnosis":
-        return "#39ff14"; // Neon Green
+        return "#CCCCFF"; // Neon Periwinkle
       case "Omitted Symptoms/Diagnosis":
         return "#ff00ff"; // Neon Magenta
       case "Incorrect Medicinal Instructions":
-        return "#00ff00"; // Neon Green (alternate)
+        return "#98FF98"; // Neon Mint
       case "Omitted Medicinal Instructions":
-        return "#7df9ff"; // Neon Blue
+        return "#C87137"; // Neon Brown
       case "Incorrect Followup":
-        return "#ff007f"; // Neon Pink (alternate)
+        return "#ff007f"; // Neon Hot Pink
       case "Omitted Followup":
         return "#ff91a4"; // Neon Peach
       default:
@@ -169,16 +169,43 @@ function HighlightText() {
         return "Omitted Patient History";
       case "#39ff14":
         return "Incorrect Symptoms/Diagnosis";
-      case "#ff00ff":
+      case "#CCCCFF":
         return "Omitted Symptoms/Diagnosis";
-      case "#00ff00":
+      case "#98FF98":
         return "Incorrect Medicinal Instructions";
-      case "#7df9ff":
+      case "#C87137":
         return "Omitted Medicinal Instructions";
       case "#ff007f":
         return "Incorrect Followup";
       case "#ff91a4":
         return "Omitted Followup";
+      default:
+        return "Not Specified";
+    }
+  };
+
+  const colorCodeToName = (colorCode) => {
+    switch (colorCode) {
+      case "#ff6ec7":
+        return "Neon Pink";
+      case "#00ffff":
+        return "Neon Cyan";
+      case "#ffff00":
+        return "Neon Yellow";
+      case "#ffa500":
+        return "Neon Orange";
+      case "#CCCCFF":
+        return "Neon Periwinkle";
+      case "#ff00ff":
+        return "Neon Magenta";
+      case "#98FF98":
+        return "Neon Mint";
+      case "#C87137":
+        return "Neon Brown";
+      case "#ff007f":
+        return "Neon Hot Pink";
+      case "#ff91a4":
+        return "Neon Peach";
       default:
         return "Not Specified";
     }
@@ -316,7 +343,7 @@ function HighlightText() {
       </section>
       <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
         <div style={{ width: "50%", textAlign: "center", position: "relative" }}>
-          <button style={{ backgroundColor: "blue", color: "white" }} onClick={() => setShowIncorrectReasoning(!showIncorrectReasoning)}>
+          <button style={{ backgroundColor: "darkblue", color: "white" }} onClick={() => setShowIncorrectReasoning(!showIncorrectReasoning)}>
             Incorrect Reasoning
           </button>
           {showIncorrectReasoning && (
@@ -334,7 +361,7 @@ function HighlightText() {
           )}
         </div>
         <div style={{ width: "50%", textAlign: "center", position: "relative" }}>
-          <button style={{ backgroundColor: "blue", color: "white" }} onClick={() => setShowChronologicalIncon(!showChronologicalIncon)}>
+          <button style={{ backgroundColor: "darkblue", color: "white" }} onClick={() => setShowChronologicalIncon(!showChronologicalIncon)}>
             Chronological Inconsistency
           </button>
           {showChronologicalIncon && (
@@ -396,7 +423,8 @@ function HighlightText() {
                         : `${startWordIndex}`}
                     </td>
                     <td style={{ border: "1px solid black", padding: "8px" }}>
-                      {highlight.color}
+                      {/* {highlight.color} */}
+                      {colorCodeToName(highlight.color)}
                     </td>
                     <td style={{ border: "1px solid black", padding: "8px" }}>
                       <button style={{ backgroundColor: "black", color: "white", fontWeight: "bold" }}  onClick={() => handleDeleteHighlight(index)}>
@@ -421,7 +449,7 @@ function HighlightText() {
         )} */}
         <button
           style={{
-            backgroundColor: isSubmitted ? "grey" : "blueviolet",
+            backgroundColor: isSubmitted ? "grey" : "darkblue",
             color: "white",
             fontWeight: "bold",
             cursor: isSubmitted ? "not-allowed" : "pointer",
