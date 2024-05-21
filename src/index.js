@@ -11,7 +11,7 @@ function HighlightText() {
   useEffect(() => {
     const fetchText = async () => {
       const response = await fetch(
-        `../data/summary_${model}_oncology-report-${id}.txt`
+        `../data/${model}-summary-${id}.txt`
       );
       const data = await response.text();
       setText(data);
@@ -167,9 +167,9 @@ function HighlightText() {
         return "Incorrect Patient History";
       case "#ffa500":
         return "Omitted Patient History";
-      case "#39ff14":
-        return "Incorrect Symptoms/Diagnosis";
       case "#CCCCFF":
+        return "Incorrect Symptoms/Diagnosis";
+      case "#ff00ff":
         return "Omitted Symptoms/Diagnosis";
       case "#98FF98":
         return "Incorrect Medicinal Instructions";
