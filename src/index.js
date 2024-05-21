@@ -333,10 +333,10 @@ function HighlightText() {
         </select>
       )}
       <section>
-        <div style={{ maxHeight: "30vh", overflowY: "scroll" }}>
-          <p
+        <div style={{ maxHeight: "30vh", overflowY: "scroll" , padding: "0 40px" }}>
+          <div
             onMouseUp={handleMouseUp}
-            style={{ cursor: "pointer", userSelect: "text" }}
+            style={{ cursor: "pointer", userSelect: "text" , whiteSpace: "pre-wrap", textAlign: "left"}}
             dangerouslySetInnerHTML={renderHighlightedText()}
           />
         </div>
