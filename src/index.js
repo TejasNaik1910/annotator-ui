@@ -42,8 +42,6 @@ function HighlightText() {
     "Omitted Medicinal Instructions",
     "Incorrect Followup",
     "Omitted Followup",
-    "Incorrect Other Inconsistency",
-    "Omitted Other Inconsistency",
   ];
 
   useEffect(() => {
@@ -60,22 +58,23 @@ function HighlightText() {
     };
   }, []);
 
-  const highlightSelection = (color) => {
+  const highlightSelection = (color, omittedDetails = '') => {
     if (selectedRange) {
       const selectedText = selectedRange.toString();
       const startOffset =
         selectedRange.startOffset +
         findNodeOffset(selectedRange.startContainer);
       const endOffset = startOffset + selectedText.length;
-
+  
       const highlight = {
         startOffset,
         endOffset,
         label: colorToLabel(color),
         text: selectedText,
         color,
+        omittedDetails,
       };
-
+  
       setHighlights([...highlights, highlight]);
       setSelectedRange(null);
     }
@@ -103,7 +102,14 @@ function HighlightText() {
 
   const handleLabelChange = (event) => {
     const color = labelToColor(event.target.value);
-    highlightSelection(color);
+    const label = event.target.value;
+    let omittedDetails = '';
+  
+    if (label.includes('Omitted')) {
+      omittedDetails = prompt('Please provide details for the omitted information:');
+    }
+  
+    highlightSelection(color, omittedDetails);
     setShowDropdown(false);
   };
 
@@ -116,19 +122,20 @@ function HighlightText() {
         text: highlight.text,
         startOffset: highlight.startOffset,
         endOffset: highlight.endOffset,
+        omittedDetails: highlight.omittedDetails, // Add omittedDetails to the JSON
       });
       return acc;
     }, {});
-
+  
     const jsonString = JSON.stringify(annotations, null, 2);
-    const blob = new Blob([jsonString], { type: "application/json" });
-    const link = document.createElement("a");
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = `annotations-${model}-${id}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
+  
     setIsSubmitted(true);
   };
 
@@ -154,10 +161,6 @@ function HighlightText() {
         return "#ff007f"; // Neon Hot Pink
       case "Omitted Followup":
         return "#ff91a4"; // Neon Peach
-      case "Incorrect Other Inconsistency":
-        return "#e9967a";
-      case "Omitted Other Inconsistency":
-        return "#ffe6a8";
       default:
         return "transparent";
     }
@@ -185,10 +188,6 @@ function HighlightText() {
         return "Incorrect Followup";
       case "#ff91a4":
         return "Omitted Followup";
-      case "#e9967a":
-        return "Incorrect Other Inconsistency";
-      case "#ffe6a8":
-        return "Omitted Other Inconsistency";
       default:
         return "Not Specified";
     }
@@ -216,10 +215,6 @@ function HighlightText() {
         return "Neon Hot Pink";
       case "#ff91a4":
         return "Neon Peach";
-      case "#e9967a":
-        return "Sand Orange";
-      case "#ffe6a8":
-        return "Sand Yellow"
       default:
         return "Not Specified";
     }
@@ -396,60 +391,72 @@ function HighlightText() {
       <section style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", width: "100%" }}>
         <div style={{ width: "100%", maxHeight: "30vh", overflowY: "scroll" }}>
           <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
-          <table style={{ margin: "0 auto", borderCollapse: "collapse" }}>
-            <thead>
-              <tr>
-                <th style={{ border: "1px solid black", padding: "8px" }}>
-                  Hallucination Type
-                </th>
-                <th style={{ border: "1px solid black", padding: "8px" }}>
-                  Evidence
-                </th>
-                <th style={{ border: "1px solid black", padding: "8px" }}>
-                  Word Count Index
-                </th>
-                <th style={{ border: "1px solid black", padding: "8px" }}>
-                  Color
-                </th>
-                <th style={{ border: "1px solid black", padding: "8px" }}>
-                  Delete
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {highlights.map((highlight, index) => {
-                const { startWordIndex, endWordIndex } = getWordOffsets(
-                  initialText,
-                  highlight.startOffset,
-                  highlight.endOffset
-                );
-                return (
-                  <tr key={index}>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>
-                      {highlight.label}
-                    </td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>
-                      {highlight.text}
-                    </td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>
-                      {endWordIndex - startWordIndex > 1
-                        ? `${startWordIndex} to ${endWordIndex}`
-                        : `${startWordIndex}`}
-                    </td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>
-                      {/* {highlight.color} */}
-                      {colorCodeToName(highlight.color)}
-                    </td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>
-                      <button style={{ backgroundColor: "black", color: "white", fontWeight: "bold" }}  onClick={() => handleDeleteHighlight(index)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <table style={{ margin: '0 auto', borderCollapse: 'collapse' }}>
+  <thead>
+    <tr>
+      <th style={{ border: '1px solid black', padding: '8px' }}>
+        Hallucination Type
+      </th>
+      <th style={{ border: '1px solid black', padding: '8px' }}>
+        Evidence
+      </th>
+      <th style={{ border: '1px solid black', padding: '8px' }}>
+        Word Count Index
+      </th>
+      <th style={{ border: '1px solid black', padding: '8px' }}>
+        Color
+      </th>
+      <th style={{ border: '1px solid black', padding: '8px' }}>
+        Omitted Details
+      </th>
+      <th style={{ border: '1px solid black', padding: '8px' }}>
+        Delete
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {highlights.map((highlight, index) => {
+      const { startWordIndex, endWordIndex } = getWordOffsets(
+        initialText,
+        highlight.startOffset,
+        highlight.endOffset
+      );
+      return (
+        <tr key={index}>
+          <td style={{ border: '1px solid black', padding: '8px' }}>
+            {highlight.label}
+          </td>
+          <td style={{ border: '1px solid black', padding: '8px' }}>
+            {highlight.text}
+          </td>
+          <td style={{ border: '1px solid black', padding: '8px' }}>
+            {endWordIndex - startWordIndex > 1
+              ? `${startWordIndex} to ${endWordIndex}`
+              : `${startWordIndex}`}
+          </td>
+          <td style={{ border: '1px solid black', padding: '8px' }}>
+            {colorCodeToName(highlight.color)}
+          </td>
+          <td style={{ border: '1px solid black', padding: '8px' }}>
+            {highlight.omittedDetails}
+          </td>
+          <td style={{ border: '1px solid black', padding: '8px' }}>
+            <button
+              style={{
+                backgroundColor: 'black',
+                color: 'white',
+                fontWeight: 'bold',
+              }}
+              onClick={() => handleDeleteHighlight(index)}
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
         </div>
       </section>
       <section>
