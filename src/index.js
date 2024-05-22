@@ -42,6 +42,8 @@ function HighlightText() {
     "Omitted Medicinal Instructions",
     "Incorrect Followup",
     "Omitted Followup",
+    "Incorrect Other Inconsistency",
+    "Omitted Other Inconsistency",
   ];
 
   useEffect(() => {
@@ -152,6 +154,10 @@ function HighlightText() {
         return "#ff007f"; // Neon Hot Pink
       case "Omitted Followup":
         return "#ff91a4"; // Neon Peach
+      case "Incorrect Other Inconsistency":
+        return "#e9967a";
+      case "Omitted Other Inconsistency":
+        return "#ffe6a8";
       default:
         return "transparent";
     }
@@ -179,6 +185,10 @@ function HighlightText() {
         return "Incorrect Followup";
       case "#ff91a4":
         return "Omitted Followup";
+      case "#e9967a":
+        return "Incorrect Other Inconsistency";
+      case "#ffe6a8":
+        return "Omitted Other Inconsistency";
       default:
         return "Not Specified";
     }
@@ -206,6 +216,10 @@ function HighlightText() {
         return "Neon Hot Pink";
       case "#ff91a4":
         return "Neon Peach";
+      case "#e9967a":
+        return "Sand Orange";
+      case "#ffe6a8":
+        return "Sand Yellow"
       default:
         return "Not Specified";
     }
