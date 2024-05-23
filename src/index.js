@@ -42,6 +42,8 @@ function HighlightText() {
     "Omitted Medicinal Instructions",
     "Incorrect Followup",
     "Omitted Followup",
+    "Incorrect Other Inconsistency",
+    "Omitted Other Inconsistency",
   ];
 
   useEffect(() => {
@@ -161,6 +163,10 @@ function HighlightText() {
         return "#ff007f"; // Neon Hot Pink
       case "Omitted Followup":
         return "#ff91a4"; // Neon Peach
+      case "Incorrect Other Inconsistency":
+        return "#e9967a";
+      case "Omitted Other Inconsistency":
+        return "#ffe6a8";
       default:
         return "transparent";
     }
@@ -188,6 +194,10 @@ function HighlightText() {
         return "Incorrect Followup";
       case "#ff91a4":
         return "Omitted Followup";
+      case "#e9967a":
+        return "Incorrect Other Inconsistency";
+      case "#ffe6a8":
+        return "Omitted Other Inconsistency";
       default:
         return "Not Specified";
     }
@@ -215,6 +225,10 @@ function HighlightText() {
         return "Neon Hot Pink";
       case "#ff91a4":
         return "Neon Peach";
+      case "#e9967a":
+        return "Sand Orange";
+      case "#ffe6a8":
+        return "Sand Yellow"
       default:
         return "Not Specified";
     }
@@ -392,71 +406,71 @@ function HighlightText() {
         <div style={{ width: "100%", maxHeight: "30vh", overflowY: "scroll" }}>
           <h3 style={{ fontWeight: "bold" }}>HALLUCINATIONS</h3>
           <table style={{ margin: '0 auto', borderCollapse: 'collapse' }}>
-  <thead>
-    <tr>
-      <th style={{ border: '1px solid black', padding: '8px' }}>
-        Hallucination Type
-      </th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>
-        Evidence
-      </th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>
-        Word Count Index
-      </th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>
-        Color
-      </th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>
-        Omitted Details
-      </th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>
-        Delete
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {highlights.map((highlight, index) => {
-      const { startWordIndex, endWordIndex } = getWordOffsets(
-        initialText,
-        highlight.startOffset,
-        highlight.endOffset
-      );
-      return (
-        <tr key={index}>
-          <td style={{ border: '1px solid black', padding: '8px' }}>
-            {highlight.label}
-          </td>
-          <td style={{ border: '1px solid black', padding: '8px' }}>
-            {highlight.text}
-          </td>
-          <td style={{ border: '1px solid black', padding: '8px' }}>
-            {endWordIndex - startWordIndex > 1
-              ? `${startWordIndex} to ${endWordIndex}`
-              : `${startWordIndex}`}
-          </td>
-          <td style={{ border: '1px solid black', padding: '8px' }}>
-            {colorCodeToName(highlight.color)}
-          </td>
-          <td style={{ border: '1px solid black', padding: '8px' }}>
-            {highlight.omittedDetails}
-          </td>
-          <td style={{ border: '1px solid black', padding: '8px' }}>
-            <button
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-                fontWeight: 'bold',
-              }}
-              onClick={() => handleDeleteHighlight(index)}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      );
-    })}
-  </tbody>
-</table>
+            <thead>
+              <tr>
+              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                Hallucination Type
+              </th>
+              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                Evidence
+              </th>
+              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                Word Count Index
+              </th>
+              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                Color
+              </th>
+              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                Omitted Details
+              </th>
+              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                Delete
+              </th>
+              </tr>
+            </thead>
+            <tbody>
+              {highlights.map((highlight, index) => {
+                const { startWordIndex, endWordIndex } = getWordOffsets(
+                  initialText,
+                  highlight.startOffset,
+                  highlight.endOffset
+                );
+                return (
+                  <tr key={index}>
+                    <td style={{ border: '1px solid black', padding: '8px' }}>
+                      {highlight.label}
+                    </td>
+                    <td style={{ border: '1px solid black', padding: '8px' }}>
+                      {highlight.text}
+                    </td>
+                    <td style={{ border: '1px solid black', padding: '8px' }}>
+                      {endWordIndex - startWordIndex > 1
+                        ? `${startWordIndex} to ${endWordIndex}`
+                        : `${startWordIndex}`}
+                    </td>
+                    <td style={{ border: '1px solid black', padding: '8px' }}>
+                      {colorCodeToName(highlight.color)}
+                    </td>
+                    <td style={{ border: '1px solid black', padding: '8px' }}>
+                      {highlight.omittedDetails}
+                    </td>
+                    <td style={{ border: '1px solid black', padding: '8px' }}>
+                      <button
+                        style={{
+                          backgroundColor: 'black',
+                          color: 'white',
+                          fontWeight: 'bold',
+                        }}
+                        onClick={() => handleDeleteHighlight(index)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </section>
       <section>
