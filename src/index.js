@@ -117,15 +117,25 @@ function HighlightText() {
 
   const handleSubmit = () => {
     const annotations = highlights.reduce((acc, highlight) => {
+      const { startWordIndex, endWordIndex } = getWordOffsets(
+        initialText,
+        highlight.startOffset,
+        highlight.endOffset
+      );
+      
       if (!acc[highlight.label]) {
         acc[highlight.label] = [];
       }
+      
       acc[highlight.label].push({
         text: highlight.text,
-        startOffset: highlight.startOffset,
-        endOffset: highlight.endOffset,
-        omittedDetails: highlight.omittedDetails, // Add omittedDetails to the JSON
+        // startOffset: highlight.startOffset,
+        // endOffset: highlight.endOffset,
+        startWordIndex: startWordIndex,
+        endWordIndex: endWordIndex,
+        omittedDetails: highlight.omittedDetails,
       });
+      
       return acc;
     }, {});
   
@@ -140,6 +150,7 @@ function HighlightText() {
   
     setIsSubmitted(true);
   };
+  
 
   const labelToColor = (label) => {
     switch (label) {
@@ -164,9 +175,9 @@ function HighlightText() {
       case "Omitted Followup":
         return "#ff91a4"; // Neon Peach
       case "Incorrect Other Inconsistency":
-        return "#e9967a";
+        return "#e9967a"; //Sand Orange
       case "Omitted Other Inconsistency":
-        return "#ffe6a8";
+        return "#ffe6a8"; //Sand Yellow
       default:
         return "transparent";
     }
@@ -474,14 +485,6 @@ function HighlightText() {
         </div>
       </section>
       <section>
-        {/* <button style={{ backgroundColor: "blueviolet", color: "white", fontWeight: "bold" }} onClick={handleSubmit} disabled={isSubmitted}>
-          SUBMIT
-        </button>
-        {isSubmitted && (
-          <h1 style={{ fontWeight: "bold", color: "darkblue" }}>
-            ANNOTATION COMPLETED
-          </h1>
-        )} */}
         <button
           style={{
             backgroundColor: isSubmitted ? "grey" : "darkblue",
