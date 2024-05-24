@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
 import "./index.css";
-//import AnnotationPage from "./pages/AnnotationPage";
 
 function HighlightText() {
   const { model, id } = useParams(); // Get the model and id parameters from the URL
@@ -10,9 +9,7 @@ function HighlightText() {
 
   useEffect(() => {
     const fetchText = async () => {
-      const response = await fetch(
-        `../data/${model}-summary-${id}.txt`
-      );
+      const response = await fetch(`../data/${model}-summary-${id}.txt`);
       const data = await response.text();
       setText(data);
     };
@@ -129,8 +126,8 @@ function HighlightText() {
       
       acc[highlight.label].push({
         text: highlight.text,
-        // startOffset: highlight.startOffset,
-        // endOffset: highlight.endOffset,
+        startOffset: highlight.startOffset,
+        endOffset: highlight.endOffset,
         startWordIndex: startWordIndex,
         endWordIndex: endWordIndex,
         omittedDetails: highlight.omittedDetails,
@@ -150,7 +147,32 @@ function HighlightText() {
   
     setIsSubmitted(true);
   };
-  
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target.result;
+        const uploadedHighlights = JSON.parse(content);
+        const newHighlights = [];
+        for (const [label, highlights] of Object.entries(uploadedHighlights)) {
+          highlights.forEach((highlight) => {
+            newHighlights.push({
+              startOffset: highlight.startOffset,
+              endOffset: highlight.endOffset,
+              label,
+              text: highlight.text,
+              color: labelToColor(label),
+              omittedDetails: highlight.omittedDetails,
+            });
+          });
+        }
+        setHighlights(newHighlights);
+      };
+      reader.readAsText(file);
+    }
+  };
 
   const labelToColor = (label) => {
     switch (label) {
@@ -246,17 +268,18 @@ function HighlightText() {
   };
 
   const renderHighlightedText = () => {
-    // Sort highlights by their starting position in descending order
+    // Sort highlights by their starting position in ascending order
     const sortedHighlights = [...highlights].sort(
-      (a, b) => b.startOffset - a.startOffset
+      (a, b) => a.startOffset - b.startOffset
     );
 
     // Start with plain text, replacing highlighted parts with span tags
     let highlightedText = initialText;
 
+    let offset = 0;
     sortedHighlights.forEach((highlight) => {
       // Extract text between startOffset and endOffset
-      const highlightedPart = highlightedText.substring(
+      const highlightedPart = initialText.substring(
         highlight.startOffset,
         highlight.endOffset
       );
@@ -264,9 +287,12 @@ function HighlightText() {
 
       // Replace the specific range with the span tag
       highlightedText =
-        highlightedText.substring(0, highlight.startOffset) +
+        highlightedText.substring(0, highlight.startOffset + offset) +
         spanTag +
-        highlightedText.substring(highlight.endOffset);
+        highlightedText.substring(highlight.endOffset + offset);
+
+      // Adjust offset for next iteration due to added span tags
+      offset += spanTag.length - highlightedPart.length;
     });
 
     return { __html: highlightedText };
@@ -367,10 +393,10 @@ function HighlightText() {
         </select>
       )}
       <section>
-        <div style={{ maxHeight: "30vh", overflowY: "scroll" , padding: "0 40px" }}>
+        <div style={{ maxHeight: "30vh", overflowY: "scroll", padding: "0 40px" }}>
           <div
             onMouseUp={handleMouseUp}
-            style={{ cursor: "pointer", userSelect: "text" , whiteSpace: "pre-wrap", textAlign: "left"}}
+            style={{ cursor: "pointer", userSelect: "text", whiteSpace: "pre-wrap", textAlign: "left" }}
             dangerouslySetInnerHTML={renderHighlightedText()}
           />
         </div>
@@ -419,24 +445,24 @@ function HighlightText() {
           <table style={{ margin: '0 auto', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
-              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
-                Hallucination Type
-              </th>
-              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
-                Evidence
-              </th>
-              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
-                Word Count Index
-              </th>
-              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
-                Color
-              </th>
-              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
-                Omitted Details
-              </th>
-              <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
-                Delete
-              </th>
+                <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                  Hallucination Type
+                </th>
+                <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                  Evidence
+                </th>
+                <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                  Word Count Index
+                </th>
+                <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                  Color
+                </th>
+                <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                  Omitted Details
+                </th>
+                <th style={{ position: 'sticky', top: 0, backgroundColor: 'white', border: '1px solid black', padding: '8px', zIndex: 1 }}>
+                  Delete
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -503,6 +529,10 @@ function HighlightText() {
           </h1>
         )}
 
+        {/* <input type="file" accept=".json" onChange={handleFileUpload} /> */}
+        <button onClick={() => document.getElementById('fileInput').click()} style={{ fontWeight: "bold", marginTop: '10px', backgroundColor: "darkblue", color: "white"}}>UPLOAD ANNOTATED JSON</button>
+        <input id="fileInput" type="file" accept=".json" onChange={handleFileUpload} style={{ display: 'none' }} />
+
       </section>
     </div>
   );
@@ -512,7 +542,6 @@ const App = () => (
   <Router>
     <Route path="/:model/:id">
       <HighlightText />
-      {/* <AnnotationPage /> */}
     </Route>
   </Router>
 );
