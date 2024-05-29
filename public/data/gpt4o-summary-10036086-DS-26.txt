@@ -1,0 +1,81 @@
+**Clinical Summary:**
+
+**Patient Information:**
+- **Name:** [Redacted]
+- **Unit No:** [Redacted]
+- **Admission Date:** [Redacted]
+- **Discharge Date:** [Redacted]
+- **Date of Birth:** [Redacted]
+- **Sex:** Male
+- **Service:** Medicine
+- **Allergies:** Erythromycin Base, Biaxin, Ciprofloxacin
+- **Attending:** [Redacted]
+
+**Chief Complaint:**
+- Dyspnea
+
+**Major Surgical or Invasive Procedures:**
+- Catheter insertion
+- IVC filter placement
+- Duodenal ulcer clipping
+
+**History of Present Illness:**
+Mr. [Redacted] is a male with a complex medical history including coronary artery disease (CAD) post-drug-eluting stent (DES) to the left anterior descending artery (LAD), HIV on HAART, hypertension (HTN), hyperlipidemia (HLD), diabetes, prostate cancer post-brachytherapy, chronic kidney disease (CKD), and a history of salmonella splenic abscess post-splenectomy. He was admitted with a submassive pulmonary embolism (PE) and atrial fibrillation (AF) with rapid ventricular response (RVR). He presented with dyspnea after being off anticoagulation due to gastrointestinal (GI) and retroperitoneal (RP) bleeding.
+
+**Past Medical History:**
+- HIV (VL <20, CD4 500s)
+- Prior hepatitis B
+- Septic shock with Strep viridans bacteremia
+- Acute kidney injury and CVVH in severe sepsis
+- CKD, stage III
+- Splenic abscess post-splenectomy
+- Type 2 diabetes mellitus on insulin
+- Morbid obesity
+- Hyperlipidemia
+- Asthma
+- Right medial meniscus tear
+- Severe bronchitis
+- MRSA colonization
+- Submassive PE/DVT
+- Retroperitoneal venous bleed
+- Saddle PE/DVT
+- Paroxysmal atrial fibrillation with RVR
+
+**Physical Exam:**
+- **Admission:** Well-developed, well-nourished, oriented x3, bilateral leg edema (R>L), scattered bruising.
+- **Discharge:** Morbidly obese, no significant lesions or rashes, distal pulses palpable and symmetric.
+
+**Pertinent Results:**
+- **Admission Labs:** Notable for low hemoglobin (HGB 10.0), elevated PTT (60.9), and elevated lactate (1.1).
+- **Discharge Labs:** Low hemoglobin (HGB 8.4), elevated MCV (114), and elevated LDH (551).
+
+**Pertinent Studies:**
+- **CXR:** Hypoinflated lungs, no focal consolidation.
+- **Pulmonary Arteriogram:** Extensive thrombosis bilaterally, successful thrombolysis and thrombectomy.
+- **TTE:** Dilated right ventricle with moderate global RV systolic dysfunction, moderate pulmonary hypertension.
+- **IVC Filter Placement:** Successful deployment of an infra-renal Denali IVC filter.
+- **EGD:** Duodenal ulcer with recent bleeding, successfully clipped.
+
+**Medications:**
+- **Admission:** Metoprolol, Fenofibrate, Rosuvastatin, Glargine, Liraglutide, Odefsey, Amiodarone, Prezcobix.
+- **Discharge:** Warfarin, Enoxaparin, Pantoprazole, Furosemide, Amiodarone, Glargine, Insulin sliding scale, Fenofibrate, Liraglutide, Metoprolol, Odefsey, Prezcobix, Rosuvastatin.
+
+**Discharge Diagnosis:**
+1. Massive Pulmonary Embolism
+2. Upper GI Bleeding post-duodenal ulcer clipping
+3. Acute on chronic hypoxic respiratory failure
+4. Atrial Fibrillation with RVR
+5. Coronary Artery Disease
+6. Acute on Chronic Heart Failure with Preserved Ejection Fraction
+7. HIV
+8. Hyperlipidemia
+9. Diabetes Mellitus
+
+**Discharge Instructions:**
+- Take all medications as prescribed, especially warfarin (INR goal: 1.8-2.4).
+- Follow up with doctors as listed.
+- Monitor weight daily and seek medical attention if weight increases by more than 3 lbs.
+- Seek medical attention for new or concerning symptoms.
+
+**Follow-Up:**
+- Ensure follow-up appointments are kept, including a clinic appointment for IVC filter removal in 3 months.

@@ -1,0 +1,74 @@
+**Clinical Summary:**
+
+**Patient Information:**
+- **Name:** [Redacted]
+- **Unit No:** [Redacted]
+- **Admission Date:** [Redacted]
+- **Discharge Date:** [Redacted]
+- **Date of Birth:** [Redacted]
+- **Sex:** Female
+- **Service:** Medicine
+- **Allergies:** No Known Allergies / Adverse Drug Reactions
+- **Attending:** [Redacted]
+
+**Chief Complaint:**
+- Right leg pain
+
+**Major Surgical or Invasive Procedure:**
+- Open reduction internal fixation of the right knee
+
+**History of Present Illness:**
+- The patient, with a history of Grade IA endometrial cancer (status post-hysterectomy), presented with acute right leg pain and a mass in the right femur, suspected to be metastatic. She also experienced sudden onset chest pain, dyspnea, and sweating. Imaging revealed lung nodules and lymphadenopathy suspicious for malignancy.
+
+**Diagnostic Tests:**
+- **Labs:** Elevated WBC, hyperglycemia, slightly increased anion gap, negative troponins, elevated lactate, and positive urine analysis for protein, ketones, and glucose.
+- **Imaging:**
+  - **CXR:** No acute pulmonary process.
+  - **CTA:** No pulmonary embolism; lung nodules and lymphadenopathy suspicious for malignancy.
+  - **R Knee and Femur X-ray:** Patchy osteopenia, possible osseous metastasis.
+  - **R Thigh MRI:** Infiltrative mass in the femur, likely metastatic disease.
+  - **CT-Guided Biopsy:** Successful biopsy of the right femur mass.
+  - **CT Abdomen/Pelvis:** Hypoenhancing areas in kidneys, pulmonary nodules, right adrenal nodule.
+  - **Venous Duplex Ultrasound:** No DVT, diffuse subcutaneous edema.
+
+**Cancer Details:**
+- **Type:** Carcinoma of unknown primary, suspected recurrence of endometrial cancer.
+- **Morphology:** Poorly differentiated carcinoma.
+- **Stage:** Not explicitly mentioned.
+- **Progression:** Metastasis to the right femur, lungs, and possibly kidneys.
+
+**Treatment and Medications:**
+- **Surgical Intervention:** Open reduction internal fixation of the right femur.
+- **Radiation Therapy:** 5 treatments for pain management.
+- **Chemotherapy:** One dose of carboplatin.
+- **Pain Management:** Transitioned from dilaudid PCA to methadone 10mg TID and oral dilaudid for breakthrough pain. Lidocaine patches, acetaminophen, and ibuprofen were also used.
+- **Other Medications:**
+  - **Constipation:** Senna, docusate sodium, polyethylene glycol, lactulose, bisacodyl.
+  - **DVT Prophylaxis:** Enoxaparin.
+  - **Diabetes Management:** Transitioned from oral medications to insulin (glargine and regular).
+  - **Hypertension:** Lisinopril and chlorthalidone.
+  - **Miscellaneous:** Multivitamin, gabapentin, calcium carbonate, zinc sulfate, ascorbic acid.
+
+**Response to Treatment:**
+- The patient's chest pain and dyspnea improved with optimized pain control.
+- Pain management was challenging but stabilized with methadone and dilaudid.
+- The patient tolerated chemotherapy well without nausea or vomiting.
+- Blood pressure and blood glucose levels were managed with adjusted medications.
+
+**Discharge Condition:**
+- **Mental Status:** Clear and coherent.
+- **Level of Consciousness:** Alert and interactive.
+- **Activity Status:** Ambulatory with assistance.
+
+**Follow-Up Instructions:**
+- Continue prescribed medications.
+- Follow-up appointments with primary oncologist and orthopaedic surgery.
+- Physical and occupational therapy.
+- Next chemotherapy session scheduled.
+
+**Discharge Disposition:**
+- Extended Care Facility: [Redacted]
+
+**Discharge Diagnosis:**
+- **Primary:** Carcinoma of unknown primary
+- **Secondary:** Hypertension, Diabetes Mellitus

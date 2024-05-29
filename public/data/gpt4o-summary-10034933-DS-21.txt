@@ -1,0 +1,63 @@
+**Clinical Summary:**
+
+**Patient Information:**
+- **Name:** [Redacted]
+- **Unit No:** [Redacted]
+- **Admission Date:** [Redacted]
+- **Discharge Date:** [Redacted]
+- **Date of Birth:** [Redacted]
+- **Sex:** Male
+- **Service:** Medicine
+- **Attending:** [Redacted]
+- **Allergies:** No Known Allergies / Adverse Drug Reactions
+
+**Chief Complaint:**
+- Back Pain
+
+**Major Surgical or Invasive Procedure:**
+- RTx treatment plan to deliver 20 Gy in 5 fractions total.
+
+**History of Present Illness:**
+- The patient, a male with a history of L3-S1 lumbar decompression and right hip replacement, presented with worsening lower back and left hip pain post-surgery. MRI revealed an epidural abscess and osteomyelitis, leading to his transfer for spine consultation and treatment.
+
+**Diagnostic Tests and Findings:**
+- **MRI Spine Lumbar:** Epidural abscess, osteomyelitis, destructive changes in L4 vertebral body, and abnormal enhancements in L1-L2 vertebral bodies and sacrum.
+- **Head Ultrasound:** Vascular soft tissue masses in the left forehead, concerning for bone metastases.
+- **Liver Ultrasound:** Diffuse heterogeneity and masses in the liver, suggestive of cholangiocarcinoma or metastatic disease.
+- **CT Head:** Right distal M1 segment MCA aneurysm, lytic and soft tissue lesions in the left frontal calvarium.
+- **CT Chest:** Pulmonary nodules, esophageal wall thickening, small pleural effusion.
+- **CT Abdomen/Pelvis:** Multiple hepatic masses, adrenal mass, lymphadenopathy, and large destructive mass in L4 vertebral body.
+- **MRI/MRA Brain:** Calvarial lesions, acute/subacute infarct, bilateral MCA aneurysms.
+- **CTA Head:** Multiple aneurysms, expansile erosive masses.
+- **Dynamic L-Spine XR:** Fracture at L4.
+- **MR Spine:** Enhancing mass at C2/C3, severe central canal narrowing.
+- **TTE:** Small PFO, normal biventricular function.
+- **Bilateral Lower Extremity Ultrasound:** No DVT.
+
+**Pathology:**
+- Skull lesion biopsy confirmed metastatic hepatocellular carcinoma.
+
+**Medications:**
+- **Admission:** Lisinopril, Lamotrigine, Atenolol, Amlodipine, Atorvastatin, Multivitamins, Omeprazole, Hydrochlorothiazide, Oxycodone, Fish Oil.
+- **Discharge:** Acetaminophen, Aspirin, Docusate Sodium, Gabapentin, Oxycodone SR, Senna, Atorvastatin, Amlodipine (held), Atenolol, Fish Oil, Hydrochlorothiazide, Lamotrigine, Lisinopril, Multivitamins, Omeprazole, Oxycodone (Immediate Release).
+
+**Hospital Course:**
+- The patient was found to have metastatic hepatocellular carcinoma (HCC) with multiple metastases, including spinal and skull metastasis, subacute CVA, bilateral MCA aneurysms, and a C2/3 mass with cord impingement. He started palliative radiation therapy and was scheduled for outpatient follow-up with oncology to discuss prognosis and treatment options.
+
+**Discharge Diagnosis:**
+1. Metastatic Hepatocellular Carcinoma
+2. Spinal Metastasis
+3. MCA Aneurysms
+4. Subacute Stroke
+5. C2/3 Mass with Cord Impingement
+
+**Discharge Condition:**
+- Mental Status: Clear and coherent.
+- Level of Consciousness: Alert and interactive.
+- Activity Status: Ambulatory with assistance.
+
+**Discharge Instructions:**
+- Continue all medications and keep follow-up appointments with oncology, neurosurgery, and neurology. Consider GI follow-up for EGD if within goals of care. Smoking cessation counseling provided.
+
+**Follow-up:**
+- Scheduled with oncology, neurosurgery, and neurology for further management and evaluation.

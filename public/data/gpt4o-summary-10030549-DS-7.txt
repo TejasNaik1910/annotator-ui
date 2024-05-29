@@ -1,0 +1,65 @@
+**Clinical Summary:**
+
+**Patient Information:**
+- **Name:** [Redacted]
+- **Unit No:** [Redacted]
+- **Admission Date:** [Redacted]
+- **Discharge Date:** [Redacted]
+- **Date of Birth:** [Redacted]
+- **Sex:** Male
+- **Service:** Medicine
+- **Allergies:** Isoniazid
+- **Attending:** [Redacted]
+
+**Chief Complaint:**
+- Right upper and lower limb weakness
+
+**Major Surgical or Invasive Procedure:**
+- Cyber Knife to brain lesion
+
+**History of Present Illness:**
+- The patient, with a history of hypertension (HTN), dyslipidemia (DL), asthma, type 2 diabetes mellitus (T2DM), rheumatoid arthritis (RA), and poorly differentiated penile squamous cell carcinoma (SCC) status post partial penectomy, presented with right lower extremity (RLE) weakness for several days and acute right upper extremity (RUE) weakness. A fall resulted in a head injury. Neurological examination revealed RLE weakness with foot drop and sensory changes. A non-contrast head CT (NCHCT) showed a large hypodensity in the left frontoparietal region, suggestive of a mass.
+
+**Past Medical History:**
+- Metastatic penile SCC with sarcomatoid and acantholytic features
+- Rheumatoid arthritis (RA)
+- Type 2 diabetes mellitus (T2DM)
+- Asthma
+- Positive PPD and Quantiferon, treated with isoniazid (INH) and rifampin
+- Osteoarthritis
+- Right bundle branch block
+- Ventral hernia
+- Hypertension (HTN)
+- Hyperlipidemia (DL)
+
+**Physical Exam:**
+- **Admission:** Notable for RUE and RLE weakness, R foot drop, sensory changes, and intermittent aphasia.
+- **Discharge:** Improved strength in RUE and RLE, stable neurological status, and no new significant findings.
+
+**Diagnostic Tests:**
+- **EEG:** Normal, no epileptiform discharges.
+- **CT Head and Neck:** Large hypodensity in the left frontoparietal region.
+- **MRI Head:** 1 cm enhancing lesion in the left superior frontal gyrus with vasogenic edema, suggestive of metastatic disease.
+- **Chest CT:** No intrathoracic malignancy, 3 mm nodule in the left lung apex likely a scar.
+- **CT Abdomen and Pelvis:** Lucent lesion in T11 vertebral body, likely metastasis.
+- **MRI Spine:** Enhancing lesion in T11 vertebral body, severe neural foraminal narrowing at L3-L4, L4-L5, and L5-S1.
+- **Cerebrospinal Fluid (CSF):** Negative for malignant cells.
+
+**Medications:**
+- **Admission:** Included albuterol, aspirin, docusate, fluticasone-salmeterol, lisinopril, oxycodone, vitamin D, dexamethasone, ondansetron, atorvastatin, metformin, and diclofenac.
+- **Discharge:** Adjusted insulin regimen, levetiracetam, omeprazole, polyethylene glycol, senna, sulfamethoxazole/trimethoprim, dexamethasone, albuterol, atorvastatin, docusate, fluticasone, metformin, ondansetron, oxycodone, and vitamin D. Aspirin, diclofenac, and lisinopril were held.
+
+**Hospital Course:**
+- The patient was treated for a new brain lesion, likely metastatic from penile SCC. He received Cyber Knife radiation therapy and dexamethasone, resulting in significant improvement in limb strength. His diabetes management was adjusted due to increased insulin requirements from steroid use. He was also treated for a urinary tract infection (UTI) with Enterobacter cloacae complex, managed with cefepime and then oral Bactrim. Hyponatremia was managed with hydration and monitoring.
+
+**Discharge Plan:**
+- The patient was discharged to an extended care facility with instructions to continue medications, follow up with neuro-oncology, and attend rehabilitation for strength recovery.
+
+**Discharge Diagnosis:**
+- Metastatic penile squamous cell carcinoma
+- New brain lesion, likely metastasis
+- Hyperglycemia
+- Type II diabetes
+
+**Follow-Up:**
+- Continued outpatient follow-up with primary oncologist, neuro-oncologist, and radiation oncology.

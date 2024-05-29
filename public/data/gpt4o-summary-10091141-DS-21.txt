@@ -1,0 +1,112 @@
+**Clinical Summary:**
+
+**Patient Information:**
+- **Name:** [Redacted]
+- **Unit No:** [Redacted]
+- **Admission Date:** [Redacted]
+- **Discharge Date:** [Redacted]
+- **Date of Birth:** [Redacted]
+- **Sex:** Female
+- **Service:** Medicine
+- **Attending:** [Redacted]
+- **Allergies:** Heparin Agents, Coumadin, Percocet, Anesthesia Tray
+
+**Chief Complaint:**
+- Unresponsive during hemodialysis.
+
+**Major Surgical or Invasive Procedures:**
+- Hemodialysis
+- ICU care
+
+**History of Present Illness:**
+- The patient, a female with type 1 diabetes mellitus (DM), end-stage renal disease (ESRD) on hemodialysis (HD), breast cancer, and pulmonary sarcoidosis, became unresponsive for 8 minutes during a scheduled HD session. She has a history of similar episodes during HD.
+
+**Past Medical History:**
+1. ESRD on HD
+2. Type 1 DM
+3. Hypertension
+4. Coronary artery disease
+5. Gout
+6. Asthma
+7. Atrial fibrillation
+8. Sarcoidosis
+9. Pulmonary hypertension
+10. Obstructive sleep apnea
+11. Ventral hernia
+12. HIT positive (per patient)
+13. Breast cancer
+14. Multiple fistula revisions
+15. s/p unilateral oophorectomy
+16. Septic arthritis (left knee)
+17. Hypothyroidism
+
+**Physical Exam:**
+- Vital signs: T: 96.3, BP: 108/54, HR: 80, RR: 14, O2Sat: 100% on NRB
+- General: Somnolent, moaning and groaning
+- HEENT: EOMI, PERRL, OP - unable to examine
+- Chest: Clear to auscultation bilaterally
+- Cardiovascular: Irregular rhythm, no murmurs
+- Abdomen: Large ventral hernia, tender epigastric area
+- Extremities: No cyanosis, clubbing, or edema
+- Neuro: Moving all extremities, incoherent
+- Derm: No rashes
+
+**Pertinent Results:**
+- **CXR:** Pulmonary edema, possible pneumonia
+- **Echo:** Tricuspid valve vegetation, increased tricuspid regurgitation
+- **EEG:** Moderate encephalopathy, no seizure activity
+- **Abd US:** Cholelithiasis, no biliary ductal dilatation
+- **CT Head:** No acute intracranial process
+- **CT Torso:** Bilateral pleural effusions, worsening anasarca, nodular opacities
+- **Labs:** Hypercalcemia, thrombocytopenia, elevated LFTs, amylase, and lipase
+
+**Significant Labs:**
+- Blood culture: Coagulase-negative Staphylococcus (one set only)
+- Stool: Positive for Clostridium difficile toxin
+
+**Brief Hospital Course:**
+- **Unresponsiveness/Altered Mental Status:** Episodes during HD, ruled out seizure, hypoglycemia, hypercarbia, hypotension, acute cardiac event, and PE. EEG showed toxic encephalopathy. Managed with CPAP, treated infection, and patient returned to baseline.
+- **Respiratory Distress:** Resolved with CPAP and dialysis. Initial concern for pneumonia, treated for C. diff.
+- **Tricuspid Valve Vegetation:** Monitored, unlikely to be new or actively infected.
+- **Hypotension:** Managed by adjusting HD rates and holding antihypertensives.
+- **C. Diff Colitis:** Treated with Flagyl.
+- **Gastrointestinal Bleed:** Monitored, no further evidence of bleeding.
+- **ESRD on HD:** Continued regular HD schedule.
+- **Hypercalcemia:** Likely primary hyperparathyroidism, managed during dialysis.
+- **Diabetes Mellitus:** Managed with sliding scale insulin.
+- **Elevated LFTs, Amylase, and Lipase:** Monitored, likely due to volume overload or medication.
+- **RUE Swelling:** Resolved, likely due to fluid shifts.
+- **Thrombocytopenia:** Chronic, monitored.
+- **Anemia:** Managed with transfusions and epo.
+- **Hypothyroidism:** Continued increased dose of Synthroid.
+- **Sarcoidosis:** Stable, recommended follow-up CT scan.
+- **Asthma:** Managed with albuterol.
+- **CAD:** Held antihypertensives, to be addressed outpatient.
+- **Breast Cancer:** Continued anastrozole.
+- **OSA:** Managed with CPAP.
+
+**Medications on Admission:**
+- Anastrozole, Albuterol, Prednisone, Cholecalciferol, Levothyroxine, Amiodarone, Quinapril, Acetaminophen, Amitriptyline, Docusate, Senna, Oxycodone, Insulin NPH, Insulin Lispro
+
+**Discharge Medications:**
+- Albuterol, Prednisone, Anastrozole, Sevelamer, Amiodarone, Levothyroxine, Docusate, Senna, Pantoprazole, Insulin Lispro, Miconazole, Nystatin, Metronidazole, Acetaminophen, Sarna lotion
+
+**Discharge Disposition:**
+- Extended Care Facility
+
+**Discharge Diagnosis:**
+- Primary: Tricuspid Valve vegetation, Hypotension, ESRD on HD
+- Secondary: IDDM, Hypertension, Pulmonary sarcoidosis, Obesity, OSA, Pulmonary hypertension, Breast cancer, Hypothyroidism
+
+**Discharge Condition:**
+- Stable
+
+**Discharge Instructions:**
+- Do not restart held medications without consulting PCP.
+- Use sliding scale insulin for glucose control.
+- Continue increased dose of Levothyroxine.
+- Complete Flagyl course for C. Diff.
+- Seek medical attention for any concerning symptoms.
+
+**Follow-up Instructions:**
+- [Redacted]
